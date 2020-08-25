@@ -12,8 +12,8 @@ public class Utilisateur {
 /*
  * variables et constantes
  */
-	private String noUtilisateur;
-	private String psoeudo;
+	private static int noUtilisateur;
+	private String pseudo;
 	private String nom;
 	private String prenom;
 	private String email;
@@ -30,10 +30,10 @@ public class Utilisateur {
 /*
  * Constructeur
  */
-	public Utilisateur(String psoeudo, String nom, String prenom, String email, String telephone,
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, int credit, int administrateur) {
 		super();
-		this.psoeudo = psoeudo;
+		this.pseudo = pseudo;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
@@ -47,24 +47,39 @@ public class Utilisateur {
 	}
 
 	
-//GETTERS AND SETTERS
-	public String getNoUtilisateur() {
+public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
+		String rue, String codePostal, String ville, String motDePasse) {
+		super();
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+	}
+
+
+	//GETTERS AND SETTERS
+	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
 
 
-	public void setNoUtilisateur(String noUtilisateur) {
-		this.noUtilisateur = noUtilisateur;
+	public static void setNoUtilisateur(int i) {
+		noUtilisateur = i;
 	}
 
 
-	public String getPsoeudo() {
-		return psoeudo;
+	public String getPseudo() {
+		return pseudo;
 	}
 
 
-	public void setPsoeudo(String psoeudo) {
-		this.psoeudo = psoeudo;
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
 	}
 
 
@@ -189,7 +204,7 @@ public class Utilisateur {
 	
 	@Override
 	public String toString() {
-		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", psoeudo=" + psoeudo + ", nom=" + nom + ", prenom="
+		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom="
 				+ prenom + ", email=" + email + ", telephone=" + telephone + ", rue=" + rue + ", codePostal="
 				+ codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", credit=" + credit
 				+ ", administrateur=" + administrateur + "]";
