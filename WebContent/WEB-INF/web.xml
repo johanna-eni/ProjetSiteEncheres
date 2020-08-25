@@ -23,4 +23,15 @@
 	<servlet-name>formulaireInscription</servlet-name>
 	<url-pattern>/jsp/formulaireInscription.jsp</url-pattern>
 </servlet-mapping>
+
+
+<servlet>
+  	<description>Paramétrage de la jsp Acceuil</description>
+  	<servlet-name>Acceuil</servlet-name>
+	<jsp-file>/WEB-INF/lib/jsp/Acceuil.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+	<servlet-name>Acceuil</servlet-name>
+	<url-pattern>/jsp/Acceuil.jsp</url-pattern>
+</servlet-mapping>
 </web-app>
