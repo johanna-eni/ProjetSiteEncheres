@@ -5,12 +5,22 @@
     <welcome-file>index</welcome-file>
   </welcome-file-list>
 <servlet>
-  	<description>Paramétrage de la jsp AcceuilNoConnect</description>
-  	<servlet-name>AcceuilNoConnect</servlet-name>
-	<jsp-file>/WEB-INF/lib/jsp/AcceuilNoConnect.jsp</jsp-file>
+  	<description>Paramétrage de la jsp acceuilNoConnect</description>
+  	<servlet-name>acceuilNoConnect</servlet-name>
+	<jsp-file>/WEB-INF/lib/jsp/acceuilNoConnect.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-	<servlet-name>AcceuilNoConnect</servlet-name>
-	<url-pattern>/jsp/AcceuilNoConnect.jsp</url-pattern>
+	<servlet-name>acceuilNoConnect</servlet-name>
+	<url-pattern>/jsp/acceuilNoConnect.jsp</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  	<description>Paramétrage de la jsp FormulaireInscription</description>
+  	<servlet-name>formulaireInscription</servlet-name>
+	<jsp-file>/WEB-INF/lib/jsp/formulaireInscription.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+	<servlet-name>formulaireInscription</servlet-name>
+	<url-pattern>/jsp/formulaireInscription.jsp</url-pattern>
 </servlet-mapping>
 </web-app>

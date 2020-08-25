@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,7 @@ import javax.sql.DataSource;
 /**
  * Servlet implementation class ServletTestPoolConnexion
  */
-@WebServlet("/fr.eni.ProjetSiteEncheres.servlets/ServletDeConnexion")
+@WebServlet("/ServletDeConnexion")
 public class ServletDeConnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,7 +47,9 @@ public class ServletDeConnexion extends HttpServlet {
 			//Exploitation de la connexion
 			out.print("La connexion est "+ (cnx.isClosed()?"fermée":"ouverte")+".");
 			//Libération de la connexion. Elle n'est pas fermée mais remise dans le pool
-			response.sendRedirect("/jsp/AcceuilNoConnect.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueilNoConnect.jsp");
+			rd.forward(request, response);
+			//response.sendRedirect("/jsp/AcceuilNoConnect.jsp");
 			
 			cnx.close();
 			

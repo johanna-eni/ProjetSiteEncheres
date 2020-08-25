@@ -68,8 +68,8 @@ public Utilisateur(String pseudo, String nom, String prenom, String email, Strin
 	}
 
 
-	public static void setNoUtilisateur(int i) {
-		noUtilisateur = i;
+	public static int setNoUtilisateur(int i) {
+		return noUtilisateur = i;
 	}
 
 
