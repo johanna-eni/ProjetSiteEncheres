@@ -4,4 +4,13 @@
   <welcome-file-list>
     <welcome-file>index</welcome-file>
   </welcome-file-list>
+<servlet>
+  	<description>Paramétrage de la jsp AcceuilNoConnect</description>
+  	<servlet-name>AcceuilNoConnect</servlet-name>
+	<jsp-file>/WEB-INF/lib/jsp/AcceuilNoConnect.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+	<servlet-name>AcceuilNoConnect</servlet-name>
+	<url-pattern>/jsp/AcceuilNoConnect.jsp</url-pattern>
+</servlet-mapping>
 </web-app>

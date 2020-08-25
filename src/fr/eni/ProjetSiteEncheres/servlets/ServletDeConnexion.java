@@ -46,7 +46,11 @@ public class ServletDeConnexion extends HttpServlet {
 			//Exploitation de la connexion
 			out.print("La connexion est "+ (cnx.isClosed()?"fermée":"ouverte")+".");
 			//Libération de la connexion. Elle n'est pas fermée mais remise dans le pool
+			response.sendRedirect("/jsp/AcceuilNoConnect.jsp");
+			
 			cnx.close();
+			
+			
 		} catch (NamingException | SQLException e) {
 			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			e.printStackTrace();

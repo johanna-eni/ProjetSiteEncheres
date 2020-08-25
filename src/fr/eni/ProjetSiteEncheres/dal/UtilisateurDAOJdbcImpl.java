@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import fr.eni.ProjetSiteEncheres.BusinessException;
+import fr.eni.ProjetSiteEncheres.bo.Utilisateur;
 
 
-public class ListeUtilisateurDAOJdbcImpl implements ListeUtilisateurDAO {
+public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	//private static final String SELECT_ALL = "SELECT no_utilisateur, pseudo FROM LISTE";
 	private static final String SELECT_BY_NO_UTILISATEUR =	"select " +
@@ -23,14 +25,14 @@ public class ListeUtilisateurDAOJdbcImpl implements ListeUtilisateurDAO {
 															"u.mot_de_passe as mot_de_passe_utilisateur" +
 															"u.credit as credit_utilisateur" +
 															"u.administrateur as administrateur_utilisateur";
-	private static final String INSERT_UTILISATEUR = "insert into UTILISATEUR(no_utilisateur) value(?);";
+	private static final String INSERT_UTILISATEUR = "insert into UTILISATEUR(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) value(?,?,?,?,?,?,?,?,?,default,default);";
 	private static final String DELETE_UTILISATEUR = "delete from utilisateur where id=?" ;
 	
 	
 	// méthode qui permet de créer un utilisateur dans la liste des utilisateur
 	@Override
-	public void insert(Utilisateur Utilisateur) throws BusinessException {
-		if(Utilisateur==null)
+	public void insert(Utilisateur utilisateur) throws BusinessException {
+		if(utilisateur==null)
 		{
 		
 		try(Connection cnx = ConnectionProvider.getConnection())
@@ -40,10 +42,18 @@ public class ListeUtilisateurDAOJdbcImpl implements ListeUtilisateurDAO {
 				cnx.setAutoCommit(false);
 				PreparedStatement pstmt;
 				ResultSet rs;
-				if(Utilisateur.getpseudo()==null)
-				{
+
 					pstmt = cnx.prepareStatement(INSERT_UTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS);
-					pstmt.setString(1, Utilisateur.getPseudo());
+					pstmt.setString(2, utilisateur.getPseudo());
+					pstmt.setString(3, utilisateur.getNom());
+					pstmt.setString(4, utilisateur.getPrenom());
+					pstmt.setString(5, utilisateur.getEmail());
+					pstmt.setString(6, utilisateur.getTelephone());
+					pstmt.setString(7, utilisateur.getRue());
+					pstmt.setString(8, utilisateur.getCodePostal());
+					pstmt.setString(9, utilisateur.getVille());
+					pstmt.setString(10, utilisateur.getMotDePasse());
+					
 					pstmt.executeUpdate();
 					rs = pstmt.getGeneratedKeys();
 					if(rs.next())
@@ -52,7 +62,6 @@ public class ListeUtilisateurDAOJdbcImpl implements ListeUtilisateurDAO {
 					}
 					rs.close();
 					pstmt.close();
-				}
 				cnx.commit();
 			}
 			catch(Exception e)
@@ -88,7 +97,7 @@ public class ListeUtilisateurDAOJdbcImpl implements ListeUtilisateurDAO {
 	
 	
 	//méthode qui permet de selectionner un utilisateur par le numéro d'utilisateur
-	@Override
+	/*@Override
 	public Utilisateur selectByNoUtilisateur(int noUtilisateur) throws BusinessException {
 		//Utilisateur Utilisateur = new Utilisateur();
 		try(Connection cnx = ConnectionProvider.getConnection())
@@ -126,7 +135,8 @@ public class ListeUtilisateurDAOJdbcImpl implements ListeUtilisateurDAO {
 		}
 		
 		return liste;
-	}
+	}*/
+
 
 	
 	
