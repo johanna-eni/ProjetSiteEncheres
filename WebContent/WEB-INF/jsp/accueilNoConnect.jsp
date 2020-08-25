@@ -4,14 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Accueil</title>
 </head>
 <body>
 
-
-<h3>Se connecter</h3>
-<h3>S'inscrire</h3>
-
+	<a href="\ProjetSiteEncheres\src\fr.eni.ProjetSiteEncheres.servlets\ServletInscription">Inscription</a>
 
 
 </body>
