@@ -9,8 +9,6 @@ public class Main {
 
 
 		Utilisateur george = new Utilisateur("georgeP", "poire", "george", "email", "0674657643", "rue casper", "67567", "thaon", "mdp");
-		
-		UtilisateurDAO.insert(george);
-	}
+			}
 
 }
