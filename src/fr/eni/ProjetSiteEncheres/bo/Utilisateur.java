@@ -47,7 +47,7 @@ public class Utilisateur {
 	}
 
 	
-public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 		String rue, String codePostal, String ville, String motDePasse) {
 		super();
 		this.pseudo = pseudo;
@@ -60,6 +60,13 @@ public Utilisateur(String pseudo, String nom, String prenom, String email, Strin
 		this.ville = ville;
 		this.motDePasse = motDePasse;
 	}
+
+
+	public Utilisateur(String pseudo, String motDePasse) {
+		super();	
+		this.pseudo = pseudo;
+		this.motDePasse = motDePasse;
+}
 
 
 	//GETTERS AND SETTERS
