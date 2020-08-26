@@ -9,7 +9,11 @@ import java.util.List;
 import fr.eni.ProjetSiteEncheres.BusinessException;
 import fr.eni.ProjetSiteEncheres.bo.Utilisateur;
 
-
+/**
+ * 
+ * @author zince
+ * classe redéfinissant les méthodes UtilisateurDAO
+ */
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	//private static final String SELECT_ALL = "SELECT no_utilisateur, pseudo FROM LISTE";
@@ -28,14 +32,14 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values(?,?,?,?,?,?,?,?,?,?,?);";
 	private static final String DELETE_UTILISATEUR = "delete from utilisateurs where id=?" ;
 	
-	
+	//méthode insert pour insérer un utilisateur en base de donnée
 	@Override
 	public void insert(Utilisateur utilisateur) throws BusinessException {
 		try(Connection cnx = ConnectionProvider.getConnection()) 
 		{
 			try
 			{
-				cnx.setAutoCommit(false);
+				cnx.setAutoCommit(false); //
 				PreparedStatement pstmt;
 				ResultSet rs;
 

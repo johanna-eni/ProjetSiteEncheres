@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<a href="\ProjetSiteEncheres\src\fr.eni.ProjetSiteEncheres.servlets\ServletInscription">Inscription</a>
+	<a href="<%=request.getContextPath()%>\ServletInscription">Inscription</a>
 
 
 </body>

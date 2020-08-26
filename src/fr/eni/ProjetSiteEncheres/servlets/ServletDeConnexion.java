@@ -48,7 +48,7 @@ public class ServletDeConnexion extends HttpServlet {
 			out.print("La connexion est "+ (cnx.isClosed()?"fermée":"ouverte")+".");
 			//Libération de la connexion. Elle n'est pas fermée mais remise dans le pool
 
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/acceuil.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueilNoConnect.jsp");
 			rd.forward(request, response);
 			
 			
