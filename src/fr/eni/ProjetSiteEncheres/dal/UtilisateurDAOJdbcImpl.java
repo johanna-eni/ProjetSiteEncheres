@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import fr.eni.ProjetSiteEncheres.BusinessException;
@@ -35,15 +36,18 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	//méthode insert pour insérer un utilisateur en base de donnée
 	@Override
 	public void insert(Utilisateur utilisateur) throws BusinessException {
+		
 		try(Connection cnx = ConnectionProvider.getConnection()) 
 		{
 			try
 			{
 				cnx.setAutoCommit(false);
 				PreparedStatement pstmt;
+				Statement stmt;
 				ResultSet rs;
 
 					pstmt = cnx.prepareStatement(INSERT_UTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS);
+					stmt = cnx.createStatement();
 					//pstmt.executeUpdate();
 					//rs = pstmt.getGeneratedKeys();
 					
@@ -53,6 +57,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					//}
 					
 					//récupération des données du formulaire
+										
 					pstmt.setString(1, utilisateur.getPseudo());
 					pstmt.setString(2, utilisateur.getNom());
 					pstmt.setString(3, utilisateur.getPrenom());
@@ -65,7 +70,13 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					pstmt.setInt(10, utilisateur.getCredit());
 					pstmt.setInt(11, utilisateur.getAdministrateur());
 					
-					
+					/**rs = stmt.executeQuery("Select pseudo from utilisateurs");
+					if (rs.next()) {
+						rs.getString(1) == utilisateur.getPseudo();
+					}
+					if(rs.next()) {
+			              return rs.getString(1);
+					}**/
 					pstmt.executeUpdate();
 
 					rs = pstmt.getGeneratedKeys();

@@ -37,6 +37,7 @@ public class ServletDeConnexion extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out= response.getWriter();
+		
 		//Création d'un objet de type Context permettant la recherche d'une ressource nommée dans l'arbre JNDI
 		try {
 			Context context = new InitialContext();

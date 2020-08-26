@@ -9,6 +9,9 @@
 <body>
 
 	<a href="<%=request.getContextPath()%>\ServletInscription">Inscription</a>
+	
+	<a href="<%=request.getContextPath()%>\ServletConnexionMonProfil">Se connecter</a>
+	
 
 
 </body>

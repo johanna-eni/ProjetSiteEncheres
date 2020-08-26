@@ -41,7 +41,7 @@
 		<input type="text" name="confirmation" value=""><br>
 		
 		<input type="submit" value="valider"/>
-		<a href="<%=request.getContextPath()%>/jsp/accueilNoConnect.jsp"><input type="button" value="annuler"></a>
+		<a href="<%=request.getContextPath()%>/ServletDeConnexion"><input type="button" value="annuler"></a>
 	</form>
 
 </body>
