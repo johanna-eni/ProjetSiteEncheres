@@ -39,7 +39,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		{
 			try
 			{
-				cnx.setAutoCommit(false); //
+				cnx.setAutoCommit(false);
 				PreparedStatement pstmt;
 				ResultSet rs;
 
@@ -52,6 +52,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					//	utilisateur.setNoUtilisateur(rs.getInt(1));
 					//}
 					
+					//récupération des données du formulaire
 					pstmt.setString(1, utilisateur.getPseudo());
 					pstmt.setString(2, utilisateur.getNom());
 					pstmt.setString(3, utilisateur.getPrenom());
@@ -69,6 +70,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 					rs = pstmt.getGeneratedKeys();
 					
+					//génération du numéro utilisateur
 					if(rs.next())
 					{
 						utilisateur.setNoUtilisateur(rs.getInt(1));
