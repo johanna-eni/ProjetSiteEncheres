@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.ProjetSiteEncheres.BusinessException;
+import fr.eni.ProjetSiteEncheres.bll.UtilisateurManager;
 import fr.eni.ProjetSiteEncheres.bo.Utilisateur;
 import fr.eni.ProjetSiteEncheres.dal.UtilisateurDAO;
 import fr.eni.ProjetSiteEncheres.dal.UtilisateurDAOJdbcImpl;
@@ -71,10 +72,10 @@ public class ServletInscription extends HttpServlet {
 		Utilisateur utilisateur = new Utilisateur(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,0,0); 
 
 		//vérification du mot de passe puis insertion de l'utilisateur dans utilisateurDAO
-		if (mot_de_passe.equals(confirmation)) {
-			
+		
 			try {
-				utilisateurDAO.insert(utilisateur);
+				UtilisateurManager utilisateurManager = new UtilisateurManager();
+				utilisateurManager.ajouterUtilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, confirmation);
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/formulaireInscription.jsp");
 				rd.forward(request, response);
 			} catch (BusinessException e) {
@@ -82,10 +83,7 @@ public class ServletInscription extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		else {
-			System.out.println("Le mot de passe est incorect");
-		}
 
 	}
 
-}
+

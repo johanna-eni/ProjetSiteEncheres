@@ -13,27 +13,17 @@ import fr.eni.ProjetSiteEncheres.bo.Utilisateur;
 /**
  * 
  * @author zince
- * classe red√©finissant les m√©thodes UtilisateurDAO
+ * classe redÈfinissant les mÈthodes UtilisateurDAO
  */
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	//private static final String SELECT_ALL = "SELECT no_utilisateur, pseudo FROM LISTE";
-	private static final String SELECT_BY_NO_UTILISATEUR =	"select " +
-															"u.noUtilisateur as no_utilisateur, "+
-															"u.pseudo as pseudo_utilisateur, " +
-															"u.prenom as prenom_utilisateur, " +
-															"u.email as pseudo_utilisateur, " +
-															"u.telephone as telephone_utilisateur" +
-															"u.rue as rue_utilisateur" +
-															"u.code_postal as code_postal_utilisateur" +
-															"u.ville as ville_utilisateur" +
-															"u.mot_de_passe as mot_de_passe_utilisateur" +
-															"u.credit as credit_utilisateur" +
-															"u.administrateur as administrateur_utilisateur from utilisateurs";
+	private static final String SELECT_BY_NO_UTILISATEUR =	"SELECT * from UTILISATEURS where noUtilisateur like 'noUtilisateur'";
 	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values(?,?,?,?,?,?,?,?,?,?,?);";
-	private static final String DELETE_UTILISATEUR = "delete from utilisateurs where id=?" ;
+	private static final String DELETE_UTILISATEUR = "delete from utilisateurs where no_utilisateur like '?'" ;
+	private static final String VERIF_PSEUDO = "Select pseudo from utilisateurs where pseudo like '?'";
 	
-	//m√©thode insert pour ins√©rer un utilisateur en base de donn√©e
+	//mÈthode insert pour insÈrer un utilisateur en base de donnÈe
 	@Override
 	public void insert(Utilisateur utilisateur) throws BusinessException {
 		
@@ -48,15 +38,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 					pstmt = cnx.prepareStatement(INSERT_UTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS);
 					stmt = cnx.createStatement();
-					//pstmt.executeUpdate();
-					//rs = pstmt.getGeneratedKeys();
 					
-					//if(rs.next())
-					//{
-					//	utilisateur.setNoUtilisateur(rs.getInt(1));
-					//}
-					
-					//r√©cup√©ration des donn√©es du formulaire
+					//rÈcupÈration des donnÈes du formulaire
 										
 					pstmt.setString(1, utilisateur.getPseudo());
 					pstmt.setString(2, utilisateur.getNom());
@@ -70,22 +53,16 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					pstmt.setInt(10, utilisateur.getCredit());
 					pstmt.setInt(11, utilisateur.getAdministrateur());
 					
-					/**rs = stmt.executeQuery("Select pseudo from utilisateurs");
-					if (rs.next()) {
-						rs.getString(1) == utilisateur.getPseudo();
-					}
-					if(rs.next()) {
-			              return rs.getString(1);
-					}**/
+					
 					pstmt.executeUpdate();
 
 					rs = pstmt.getGeneratedKeys();
 					
-					//g√©n√©ration du num√©ro utilisateur
+					//gÈnÈration du numÈro utilisateur
 					if(rs.next())
 					{
 						utilisateur.setNoUtilisateur(rs.getInt(1));
-				}
+					}
 					rs.close();
 					pstmt.close();
 				cnx.commit();
@@ -105,28 +82,29 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		
 	}
 	
-	
-	// m√©thode qui permet de cr√©er un utilisateur dans la liste des utilisateur
-	
-		
-	//}
-	
+	//MÈthode permmettant de supprimer un utilisateur par son no Utilisateur
+	@Override
+	public void delete(int noUtilisateur) throws BusinessException {
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			try {
+				cnx.setAutoCommit(false);
+				PreparedStatement pstmt;
+				Statement stmt;
+				ResultSet rs;
+
+					pstmt = cnx.prepareStatement(DELETE_UTILISATEUR);
+					pstmt.setInt(1, noUtilisateur);
+					pstmt.executeQuery();
+			} catch (Exception e) {
+				System.out.println("impossible de supprimer cet utilisateur");
+			}
+			
+		} catch (Exception  e) {
+			System.out.println("connexion impossible");
+			e.printStackTrace();
+		}	
 	}
-	// m√©thode qui permet de supprimer un utilisateur par son num√©ro d'utilisateur
-	//@Override
-	//public void delete(int noUtilisateur) throws BusinessException {
-	//	try(Connection cnx = ConnectionProvider.getConnection())
-	//	{
-	//		PreparedStatement pstmt = cnx.prepareStatement(DELETE_UTILISATEUR);
-	//		pstmt.setInt(1, noUtilisateur);
-	//		pstmt.executeUpdate();
-	//	} catch (SQLException e) {
-	//		e.printStackTrace();
-	//		BusinessException businessException = new BusinessException();
-	//		businessException.ajouterErreur(CodesResultatDAL.SUPPRESSION_LISTE_ERREUR);
-	//		throw businessException;
-	//	}
-	//	}
+	}
 	
 	
 	//m√©thode qui permet de selectionner un utilisateur par le num√©ro d'utilisateur

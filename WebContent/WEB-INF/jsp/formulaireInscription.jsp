@@ -35,13 +35,13 @@
 		<input type="text" name="ville" value=""><br>
 		
 		<label for="mot_de_passe">Mot de passe :</label>
-		<input type="text" name="mot_de_passe" value=""><br>
+		<input type="password" name="mot_de_passe" value=""><br>
 		
 		<label for="confirmation">Confirmation :</label>
-		<input type="text" name="confirmation" value=""><br>
+		<input type="password" name="confirmation" value=""><br>
 		
-		<input type="submit" value="valider"/>
-		<a href="<%=request.getContextPath()%>/ServletDeConnexion"><input type="button" value="annuler"></a>
+		<input type="submit" value="Créer"/>
+		<a href="<%=request.getContextPath()%>/ServletDeConnexion"><input type="button" value="Annuler"></a>
 	</form>
 
 </body>

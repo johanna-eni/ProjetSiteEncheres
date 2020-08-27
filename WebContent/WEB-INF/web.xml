@@ -4,55 +4,58 @@
   <welcome-file-list>
     <welcome-file>index</welcome-file>
   </welcome-file-list>
-  
-<servlet>
-  	<description>Paramétrage de la jsp acceuilNoConnect</description>
-  	<servlet-name>acceuilNoConnect</servlet-name>
-	<jsp-file>/WEB-INF/jsp/acceuilNoConnect.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-	<servlet-name>acceuilNoConnect</servlet-name>
-	<url-pattern>/jsp/acceuilNoConnect.jsp</url-pattern>
-</servlet-mapping>
-
-<servlet>
-  	<description>Paramétrage de la jsp FormulaireInscription</description>
-  	<servlet-name>formulaireInscription</servlet-name>
-	<jsp-file>/WEB-INF/jsp/formulaireInscription.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-	<servlet-name>formulaireInscription</servlet-name>
-	<url-pattern>/jsp/formulaireInscription.jsp</url-pattern>
-</servlet-mapping>
-
-<servlet>
-  	<description>Paramétrage de la jsp connexion utilisateur</description>
-  	<servlet-name>connexionUtilisateur</servlet-name>
-	<jsp-file>/WEB-INF/jsp/connexionUtilisateur.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-	<servlet-name>connexionUtilisateur</servlet-name>
-	<url-pattern>/jsp/connexionUtilisateur.jsp</url-pattern>
-</servlet-mapping>
-
-<servlet>
-  	<description>Paramétrage de la jsp Envoie un email</description>
-  	<servlet-name>envoieEmail</servlet-name>
-	<jsp-file>/WEB-INF/jsp/envoieEmail.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-	<servlet-name>envoieEmail</servlet-name>
-	<url-pattern>/jsp/envoieEmail.jsp</url-pattern>
-</servlet-mapping>
-
-<servlet>
-  	<description>Paramétrage de la jsp Accueil</description>
-  	<servlet-name>accueilConnect</servlet-name>
-	<jsp-file>/WEB-INF/jsp/accueilConnect.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-	<servlet-name>accueilConnect</servlet-name>
-	<url-pattern>/jsp/accueilConnect.jsp</url-pattern>
-</servlet-mapping>
-
+  <servlet>
+    <description>Paramétrage de la jsp acceuilNoConnect</description>
+    <servlet-name>acceuilNoConnect</servlet-name>
+    <jsp-file>/WEB-INF/jsp/acceuilNoConnect.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>acceuilNoConnect</servlet-name>
+    <url-pattern>/jsp/acceuilNoConnect.jsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Paramétrage de la jsp FormulaireInscription</description>
+    <servlet-name>formulaireInscription</servlet-name>
+    <jsp-file>/WEB-INF/jsp/formulaireInscription.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>formulaireInscription</servlet-name>
+    <url-pattern>/jsp/formulaireInscription.jsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Paramétrage de la jsp connexion utilisateur</description>
+    <servlet-name>connexionUtilisateur</servlet-name>
+    <jsp-file>/WEB-INF/jsp/connexionUtilisateur.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>connexionUtilisateur</servlet-name>
+    <url-pattern>/jsp/connexionUtilisateur.jsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Paramétrage de la jsp Envoie un email</description>
+    <servlet-name>envoieEmail</servlet-name>
+    <jsp-file>/WEB-INF/jsp/envoieEmail.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>envoieEmail</servlet-name>
+    <url-pattern>/jsp/envoieEmail.jsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Paramétrage de la jsp Accueil</description>
+    <servlet-name>accueilConnect</servlet-name>
+    <jsp-file>/WEB-INF/jsp/accueilConnect.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>accueilConnect</servlet-name>
+    <url-pattern>/jsp/accueilConnect.jsp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Paramétrage de la jsp mon profil</description>
+    <servlet-name>monProfil</servlet-name>
+    <jsp-file>/WEB-INF/jsp/monProfil.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>monProfil</servlet-name>
+    <url-pattern>/jsp/monProfil.jsp</url-pattern>
+  </servlet-mapping>
 </web-app>

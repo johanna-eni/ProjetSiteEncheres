@@ -22,6 +22,7 @@ public class Utilisateur {
 	private String codePostal;
 	private String ville;
 	private String motDePasse;
+	private String confirmation;
 	private int credit;
 	private int administrateur;
 	
@@ -67,6 +68,27 @@ public class Utilisateur {
 		this.pseudo = pseudo;
 		this.motDePasse = motDePasse;
 }
+
+
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse, String confirmation) {
+		super();
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+		this.confirmation = confirmation;
+	}
+
+
+	public Utilisateur() {
+		
+	}
 
 
 	//GETTERS AND SETTERS
@@ -208,7 +230,15 @@ public class Utilisateur {
 		this.enchere = enchere;
 	}
 	
-	
+
+	public String getConfirmation() {
+		return confirmation;
+	}
+
+
+	public void setConfirmation(String confirmation) {
+		this.confirmation = confirmation;
+	}
 	@Override
 	public String toString() {
 		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom="
@@ -216,4 +246,5 @@ public class Utilisateur {
 				+ codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", credit=" + credit
 				+ ", administrateur=" + administrateur + "]";
 	}
+
 }

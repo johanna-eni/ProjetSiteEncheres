@@ -14,18 +14,17 @@
 		<input type="text" name="pseudo" value=""><br>
 		
 		<label for="mot_de_passe">Not de passe :</label>
-		<input type="text" name="mot_de_passe" value=""><br>
+		<input type="password" name="mot_de_passe" value=""><br>
 		
 		<label for="connexion"></label>
 		<input type="submit"  value="Connexion"><br>
 		
 		<!--<label for="se_souvenir_de_moi">Se souvenir de moi</label>
-		<input type="checkbox" name="se_souvenir_de_moi" id="se_souvenir_de_moi"></div><br>
+		<input type="checkbox" name="se_souvenir_de_moi" id="se_souvenir_de_moi"></div><br>-->
 		
-		<a href="envoieEmail">Mot de passe oublié</a><br>
-		-->
+		<a href="<%=request.getContextPath()%>/jsp/envoieEmail.jsp">Mot de passe oublié</a><br>
 		
-		<a href="<%=request.getContextPath()%>/jsp/formulaireInscription.jsp"><input type="button" value="creer_un_compte"></a>
+		<a href="<%=request.getContextPath()%>/jsp/formulaireInscription.jsp"><input type="button" value="Créer un compte"></a>
 		
 	</form>
 	

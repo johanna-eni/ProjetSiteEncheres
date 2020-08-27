@@ -9,6 +9,7 @@
 <body>
 
 	<h3>ENI-Enchères</h3>
+	
 	<a href="<%=request.getContextPath()%>\ServletInscription">Inscription</a>
 	<a href="<%=request.getContextPath()%>\ServletConnexionMonProfil">Se connecter</a>
 	
@@ -44,9 +45,8 @@
 					<p>Vendeur :</p>
 				</a>
 			</li>
-		
 		</ul>
-	
+	</article>
 	
 	
 	

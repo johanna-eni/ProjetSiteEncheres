@@ -53,16 +53,13 @@ public class ServletConnexionMonProfil extends HttpServlet {
 
 		//vérification du mot de passe dans la base de donnée par rapport au pseudo 
 		
-		if (mot_de_passe.equals(confirmation)) {
+		
+		
+		
+		if (mot_de_passe.equals(mot_de_passe)) {
 					
-			try {
-				utilisateurDAO.insert(utilisateur);
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/formulaireInscription.jsp");
-				rd.forward(request, response);
-			} catch (BusinessException e) {
-				System.out.println("erreur");
-				e.printStackTrace();
-			}
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueilConnect.jsp");
+			rd.forward(request, response);
 		}
 			else {
 				System.out.println("Le mot de passe est incorect");
