@@ -9,6 +9,8 @@
 <body>
 
 <h3>ENI-Encheres</h3>
+	
+	${ pseudo }
 
 
 <div class="modifier_profil">

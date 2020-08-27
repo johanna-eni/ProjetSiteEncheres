@@ -13,7 +13,7 @@
 	<a href="">Encheres</a>
 	<a href="">Vendre un article</a>
 	<a href="<%=request.getContextPath()%>/ServletModifierMonProfil">Mon profil</a>
-	<a href="">Deconnexion</a>
+	<a href="<%=request.getContextPath()%>/ServletDeconnexion">Deconnexion</a>
 	
 	<h3>Liste des encheres</h3>
 	

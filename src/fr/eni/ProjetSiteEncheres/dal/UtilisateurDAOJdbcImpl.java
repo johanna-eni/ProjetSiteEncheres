@@ -13,7 +13,7 @@ import fr.eni.ProjetSiteEncheres.bo.Utilisateur;
 /**
  * 
  * @author zince
- * classe redéfinissant les méthodes UtilisateurDAO
+ * classe redï¿½finissant les mï¿½thodes UtilisateurDAO
  */
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
@@ -22,8 +22,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values(?,?,?,?,?,?,?,?,?,?,?);";
 	private static final String DELETE_UTILISATEUR = "delete from utilisateurs where no_utilisateur = ?" ;
 	private static final String SELECT_BY_PSEUDO =	"SELECT * from UTILISATEURS where pseudo = ?";
-	
-	//méthode insert pour insérer un utilisateur en base de donnée
+	private static final String SELECT_ALL_BY_PSEUDO_AND_MDP =	"SELECT * from UTILISATEURS where pseudo = ? AND mot_de_passe = ?";
+
+	//mï¿½thode insert pour insï¿½rer un utilisateur en base de donnï¿½e
 	@Override
 	public void insert(Utilisateur utilisateur) throws BusinessException {
 		
@@ -39,7 +40,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					pstmt = cnx.prepareStatement(INSERT_UTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS);
 					stmt = cnx.createStatement();
 					
-					//récupération des données du formulaire
+					//rï¿½cupï¿½ration des donnï¿½es du formulaire
 										
 					pstmt.setString(1, utilisateur.getPseudo());
 					pstmt.setString(2, utilisateur.getNom());
@@ -58,7 +59,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 					rs = pstmt.getGeneratedKeys();
 					
-					//génération du numéro utilisateur
+					//gï¿½nï¿½ration du numï¿½ro utilisateur
 					if(rs.next())
 					{
 						utilisateur.setNoUtilisateur(rs.getInt(1));
@@ -82,7 +83,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		
 	}
 	
-	//Méthode permmettant de supprimer un utilisateur par son no Utilisateur
+	//Mï¿½thode permmettant de supprimer un utilisateur par son no Utilisateur
 	@Override
 	public void delete(int noUtilisateur) throws BusinessException {
 		try(Connection cnx = ConnectionProvider.getConnection()){
@@ -126,6 +127,34 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public boolean verificationCouplePseudoMdp(String pseudo, String mot_de_passe) throws BusinessException {
+		
+		boolean etat = false;
+		
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement pstmt;
+			ResultSet rs;
+			
+				pstmt = cnx.prepareStatement(SELECT_ALL_BY_PSEUDO_AND_MDP);
+				pstmt.setString(1, pseudo);
+				pstmt.setNString(2, mot_de_passe);
+				rs = pstmt.executeQuery();
+				
+				
+				while (rs.next()) {
+					etat = true;
+				}
+	
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("echec select pseudo");
+		}
+		return etat;
+		
 	}
 }
 	

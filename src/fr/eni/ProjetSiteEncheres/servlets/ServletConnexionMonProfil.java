@@ -8,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.swing.text.StyledEditorKit.BoldAction;
+
+import org.apache.catalina.connector.Request;
 
 import fr.eni.ProjetSiteEncheres.BusinessException;
 import fr.eni.ProjetSiteEncheres.bll.UtilisateurManager;
@@ -55,14 +59,24 @@ public class ServletConnexionMonProfil extends HttpServlet {
 		//vérification du mot de passe dans la base de donnée par rapport au pseudo 
 		try {
 			UtilisateurManager utilisateurManager = new UtilisateurManager();
+			Boolean etat = utilisateurManager.verifPseudoMotDePasse(pseudo, mot_de_passe);
+			
+			if (etat) {
+				HttpSession session = request.getSession();
 				
+				session.setAttribute("pseudo", pseudo);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueilConnect.jsp");
+				rd.forward(request, response);
+			}
+			else {
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexionUtilisateur.jsp");
+				rd.forward(request, response);
+			}
 			
-			
-			
-			RequestDispatcher rd = request.getRequestDispatcher("");
-			rd.forward(request, response);
-		} catch (BusinessException e) {
-			System.out.println("erreur");
+		}
+		catch (ServletException e) {
+			System.out.println("erreur de la servlet");
 			e.printStackTrace();
 		}
 		

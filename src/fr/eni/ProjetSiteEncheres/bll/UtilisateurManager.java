@@ -7,7 +7,7 @@ import fr.eni.ProjetSiteEncheres.dal.UtilisateurDAO;
 /**
  * 
  * @author jrigollo2020
- *classe vérifiant les information utilisateur et renvoyant à la dal pour insertion en base
+ *classe vï¿½rifiant les information utilisateur et renvoyant ï¿½ la dal pour insertion en base
  */
 public class UtilisateurManager {
 
@@ -43,8 +43,7 @@ public class UtilisateurManager {
 			}
 			
 		}catch (BusinessException e) {
-			
-			System.out.println("impossible d'insérer l'utilisateur");
+			System.out.println("impossible d'insï¿½rer l'utilisateur");
 		}
 		return utilisateur;
 	}
@@ -53,18 +52,19 @@ public class UtilisateurManager {
 	
 	private boolean validerPseudo(String pseudo) {
 		
-		//vérification caractères alphanumérique du pseudo
+		//vï¿½rification caractï¿½res alphanumï¿½rique du pseudo
 		if(pseudo.matches("\\p{Alnum}")){
 			System.out.println("pseudo error");
 			return false;
 			}
-		//vérification de la non existance d'un pseudo doublon
+		//vï¿½rification de la non existance d'un pseudo doublon
 			try {
 				if(this.utilisateurDAO.selectByPseudo(pseudo) != null) {
-				System.out.println("Pseudo déjà existant en base");
+				System.out.println("Pseudo dï¿½jï¿½ existant en base");
 				return false;
 				}
-			} catch (BusinessException e) {
+			}
+			catch (BusinessException e) {
 			}
 			return true; 
 			
@@ -76,6 +76,24 @@ public class UtilisateurManager {
 			return false;
 		}
 		return true;
+	}
+
+	public boolean verifPseudoMotDePasse(String pseudo, String mot_de_passe) {
+		try {
+			if (this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe)) {
+				System.out.println("vÃ©rif ok (manager)");
+				return true;
+			}
+			else {
+				System.out.println("vÃ©rif no OK (manager)");
+				return false;
+			}
+		}
+		catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		return true;
+		
 	}
 	
 }

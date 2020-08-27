@@ -22,13 +22,13 @@ import javax.sql.DataSource;
  * Servlet implementation class ServletTestPoolConnexion
  */
 @WebServlet("/ServletDeConnexion")
-public class ServletDeConnexion extends HttpServlet {
+public class ServletConnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletDeConnexion() {
+    public ServletConnexion() {
         super();
     }
 
