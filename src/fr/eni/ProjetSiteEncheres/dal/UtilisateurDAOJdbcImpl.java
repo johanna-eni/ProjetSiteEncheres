@@ -18,11 +18,10 @@ import fr.eni.ProjetSiteEncheres.bo.Utilisateur;
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	//private static final String SELECT_ALL = "SELECT no_utilisateur, pseudo FROM LISTE";
-	private static final String SELECT_BY_NO_UTILISATEUR =	"SELECT * from UTILISATEURS where noUtilisateur = 'noUtilisateur'";
+	private static final String SELECT_BY_NO_UTILISATEUR =	"SELECT * from UTILISATEURS where noUtilisateur = ?";
 	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values(?,?,?,?,?,?,?,?,?,?,?);";
-	private static final String DELETE_UTILISATEUR = "delete from utilisateurs where no_utilisateur like '?'" ;
-	private static final String VERIF_PSEUDO = "Select pseudo from utilisateurs where pseudo = '?'";
-	private static final String SELECT_BY_PSEUDO =	"SELECT * from UTILISATEURS where pseudo = '?'";
+	private static final String DELETE_UTILISATEUR = "delete from utilisateurs where no_utilisateur = ?" ;
+	private static final String SELECT_BY_PSEUDO =	"SELECT * from UTILISATEURS where pseudo = ?";
 	
 	//méthode insert pour insérer un utilisateur en base de donnée
 	@Override
@@ -114,6 +113,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			ResultSet rs;
 			
 				
+			
 				pstmt = cnx.prepareStatement(SELECT_BY_PSEUDO);
 				pstmt.setString(1, pseudo);
 				rs = pstmt.executeQuery();
@@ -123,10 +123,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
 }

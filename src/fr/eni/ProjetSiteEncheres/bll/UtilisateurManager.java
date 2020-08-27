@@ -49,35 +49,25 @@ public class UtilisateurManager {
 		return utilisateur;
 	}
 
-	
-	public void verifPseudoMdp(String pseudo, String mot_de_passe) {
 		
-		this.validerPseudo(pseudo);
-		
-		
-
-	}
-	
-	
 	
 	private boolean validerPseudo(String pseudo) {
 		
 		//vérification caractères alphanumérique du pseudo
-		if(!pseudo.matches("\\p{Alnum}")){
+		if(pseudo.matches("\\p{Alnum}")){
 			System.out.println("pseudo error");
 			return false;
 			}
 		//vérification de la non existance d'un pseudo doublon
 			try {
 				if(this.utilisateurDAO.selectByPseudo(pseudo) != null) {
-				
+				System.out.println("Pseudo déjà existant en base");
 				return false;
 				}
 			} catch (BusinessException e) {
-				return true;
-			} 
-			return true;
-		
+			}
+			return true; 
+			
 	}
 
 	private boolean validerMotDePasse(String mot_de_passe, String confirmation) {
