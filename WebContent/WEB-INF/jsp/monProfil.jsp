@@ -10,9 +10,18 @@
 
 <h3>ENI-Encheres</h3>
 	
-	${ utilisateurInfo }
-	<h3>Numero utilisateur :</h3${utilisateurInfo.getNoUtilisateur();}>
-	<h3>Numero utilisateur :</h3${pageScope [NoUtilisateur]}>
+	<h4>Pseudo : ${ utilisateurInfo.pseudo } </h3>
+	<h4>Nom : ${ utilisateurInfo.nom } </h3>
+	<h4>Prenom : ${ utilisateurInfo.prenom } </h3>
+	<h4>Email : ${ utilisateurInfo.email } </h3>
+	<h4>Téléphone : ${ utilisateurInfo.telephone } </h3>
+	<h4>Rue : ${ utilisateurInfo.rue } </h3>
+	<h4>Code postal : ${ utilisateurInfo.codePostal } </h3>
+	<h4>Ville : ${ utilisateurInfo.ville } </h3>
+	
+	
+	
+	
 	
 
 <div class="modifier_profil">

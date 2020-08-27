@@ -60,12 +60,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					rs = pstmt.getGeneratedKeys();
 					
 					//g�n�ration du num�ro utilisateur
-					if(rs.next())
-					{
-						utilisateur.setNoUtilisateur(rs.getInt(1));
-					}
-					rs.close();
-					pstmt.close();
+			if(rs.next()) {
+				utilisateur.setNoUtilisateur(rs.getInt(1));
+			}
+				rs.close();
+				pstmt.close();
 				cnx.commit();
 			}
 			catch(Exception e)
@@ -131,8 +130,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	@Override
 	public Utilisateur verificationCouplePseudoMdp(String pseudo, String motDePasse) throws BusinessException {
-		
-		
 		
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			PreparedStatement pstmt;
