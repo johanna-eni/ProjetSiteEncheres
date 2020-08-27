@@ -12,6 +12,8 @@ import fr.eni.ProjetSiteEncheres.bo.Utilisateur;
 public interface UtilisateurDAO {
 	public void insert(Utilisateur utilisateur) throws BusinessException;
 	public void delete(int noUtilisateur) throws BusinessException;
+	public Utilisateur selectByPseudo(String pseudo) throws BusinessException;
+
 	/*
 	public List<ListeUtilisateur> selectAll () throws BusinessException;
 	public ListeUtilisateur selectByNoUtilisateur(int noUtilisateur) throws BusinessException;*/

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.ProjetSiteEncheres.BusinessException;
+import fr.eni.ProjetSiteEncheres.bll.UtilisateurManager;
 import fr.eni.ProjetSiteEncheres.bo.Utilisateur;
 import fr.eni.ProjetSiteEncheres.dal.UtilisateurDAOJdbcImpl;
 
@@ -45,25 +46,36 @@ public class ServletConnexionMonProfil extends HttpServlet {
 		String pseudo = null;
 		String mot_de_passe = null;
 
-		pseudo = request.getParameter("Identifiant");
+		pseudo = request.getParameter("pseudo");
 		mot_de_passe = request.getParameter("mot_de_passe");
 
 		//utilisation du constructeur Utilisateur pour chercher un utilisateur dans la base de donnée
 		Utilisateur utilisateur = new Utilisateur(pseudo,mot_de_passe); 
 
 		//vérification du mot de passe dans la base de donnée par rapport au pseudo 
+		try {
+			UtilisateurManager utilisateurManager = new UtilisateurManager();
+				
+			
+			
+			
+			RequestDispatcher rd = request.getRequestDispatcher("");
+			rd.forward(request, response);
+		} catch (BusinessException e) {
+			System.out.println("erreur");
+			e.printStackTrace();
+		}
 		
 		
 		
-		
-		if (mot_de_passe.equals(mot_de_passe)) {
+		/*if (mot_de_passe.equals(mot_de_passe)) {
 					
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueilConnect.jsp");
 			rd.forward(request, response);
 		}
 			else {
 				System.out.println("Le mot de passe est incorect");
-			}
+			}*/
 
 	}
 }

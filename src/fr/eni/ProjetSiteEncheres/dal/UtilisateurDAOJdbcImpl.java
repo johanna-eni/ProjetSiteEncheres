@@ -18,10 +18,11 @@ import fr.eni.ProjetSiteEncheres.bo.Utilisateur;
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	//private static final String SELECT_ALL = "SELECT no_utilisateur, pseudo FROM LISTE";
-	private static final String SELECT_BY_NO_UTILISATEUR =	"SELECT * from UTILISATEURS where noUtilisateur like 'noUtilisateur'";
+	private static final String SELECT_BY_NO_UTILISATEUR =	"SELECT * from UTILISATEURS where noUtilisateur = 'noUtilisateur'";
 	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values(?,?,?,?,?,?,?,?,?,?,?);";
 	private static final String DELETE_UTILISATEUR = "delete from utilisateurs where no_utilisateur like '?'" ;
-	private static final String VERIF_PSEUDO = "Select pseudo from utilisateurs where pseudo like '?'";
+	private static final String VERIF_PSEUDO = "Select pseudo from utilisateurs where pseudo = '?'";
+	private static final String SELECT_BY_PSEUDO =	"SELECT * from UTILISATEURS where pseudo = '?'";
 	
 	//méthode insert pour insérer un utilisateur en base de donnée
 	@Override
@@ -86,11 +87,10 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	@Override
 	public void delete(int noUtilisateur) throws BusinessException {
 		try(Connection cnx = ConnectionProvider.getConnection()){
+			
 			try {
 				cnx.setAutoCommit(false);
 				PreparedStatement pstmt;
-				Statement stmt;
-				ResultSet rs;
 
 					pstmt = cnx.prepareStatement(DELETE_UTILISATEUR);
 					pstmt.setInt(1, noUtilisateur);
@@ -104,7 +104,32 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			e.printStackTrace();
 		}	
 	}
+
+	@Override
+	public Utilisateur selectByPseudo(String pseudo) throws BusinessException {
+		
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			Utilisateur utilisateur = new Utilisateur();
+			PreparedStatement pstmt;
+			ResultSet rs;
+			
+				
+				pstmt = cnx.prepareStatement(SELECT_BY_PSEUDO);
+				pstmt.setString(1, pseudo);
+				rs = pstmt.executeQuery();
+				
+			if (rs.next()) {
+				return utilisateur;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
+}
 	
 	
 	//mÃ©thode qui permet de selectionner un utilisateur par le numÃ©ro d'utilisateur

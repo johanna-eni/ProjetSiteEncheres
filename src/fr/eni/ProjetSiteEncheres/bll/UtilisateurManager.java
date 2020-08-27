@@ -24,43 +24,68 @@ public class UtilisateurManager {
 		
 		Utilisateur utilisateur = null;
 		
-		this.validerMotDePasse(mot_de_passe, confirmation);
-		this.validerPseudo(pseudo);
-		
-		try{
+		try {
 			utilisateur = new Utilisateur();
-			utilisateur.setPseudo(pseudo);
-			utilisateur.setNom(nom);
-			utilisateur.setPrenom(prenom);
-			utilisateur.setEmail(email);
-			utilisateur.setTelephone(telephone);
-			utilisateur.setRue(rue);
-			utilisateur.setCodePostal(code_postal);
-			utilisateur.setVille(ville);
-			utilisateur.setMotDePasse(mot_de_passe);
 			
+			if  (this.validerPseudo(pseudo) && this.validerMotDePasse(mot_de_passe, confirmation)) {
+				
+				utilisateur.setPseudo(pseudo);
+				utilisateur.setNom(nom);
+				utilisateur.setPrenom(prenom);
+				utilisateur.setEmail(email);
+				utilisateur.setTelephone(telephone);
+				utilisateur.setRue(rue);
+				utilisateur.setCodePostal(code_postal);
+				utilisateur.setVille(ville);
+				utilisateur.setMotDePasse(mot_de_passe);
+				
+				this.utilisateurDAO.insert(utilisateur);
+			}
 			
-			this.utilisateurDAO.insert(utilisateur);
-		}
-		catch(BusinessException e)
-		{
-			System.out.println("error insert");
+		}catch (BusinessException e) {
+			
+			System.out.println("impossible d'insérer l'utilisateur");
 		}
 		return utilisateur;
 	}
 
-	private void validerPseudo(String pseudo) {
-		if(pseudo.matches("\\p{Alnum}")){
-			System.out.println("pseudo error");;
-		}
+	
+	public void verifPseudoMdp(String pseudo, String mot_de_passe) {
+		
+		this.validerPseudo(pseudo);
+		
+		
+
+	}
+	
+	
+	
+	private boolean validerPseudo(String pseudo) {
+		
+		//vérification caractères alphanumérique du pseudo
+		if(!pseudo.matches("\\p{Alnum}")){
+			System.out.println("pseudo error");
+			return false;
+			}
+		//vérification de la non existance d'un pseudo doublon
+			try {
+				if(this.utilisateurDAO.selectByPseudo(pseudo) != null) {
+				
+				return false;
+				}
+			} catch (BusinessException e) {
+				return true;
+			} 
+			return true;
 		
 	}
 
-	private void validerMotDePasse(String mot_de_passe, String confirmation) {
+	private boolean validerMotDePasse(String mot_de_passe, String confirmation) {
 		if(!mot_de_passe.equals(confirmation)) {
-			System.out.println("mdp error");;
+			System.out.println("mdp error");
+			return false;
 		}
-		
+		return true;
 	}
 	
 }
