@@ -78,21 +78,24 @@ public class UtilisateurManager {
 		return true;
 	}
 
-	public boolean verifPseudoMotDePasse(String pseudo, String mot_de_passe) {
+	public Utilisateur verifPseudoMotDePasse(String pseudo, String mot_de_passe) {
+		Utilisateur utilisateur = new Utilisateur();
+		
 		try {
-			if (this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe)) {
+			if (this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe) != null) {
+				utilisateur = this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe);
 				System.out.println("vérif ok (manager)");
-				return true;
+				return utilisateur;
 			}
 			else {
 				System.out.println("vérif no OK (manager)");
-				return false;
+				return null;
 			}
 		}
 		catch (BusinessException e) {
 			e.printStackTrace();
 		}
-		return true;
+		return utilisateur;
 		
 	}
 	

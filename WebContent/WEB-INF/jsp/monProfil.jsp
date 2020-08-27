@@ -10,8 +10,10 @@
 
 <h3>ENI-Encheres</h3>
 	
-	${ pseudo }
-
+	${ utilisateurInfo }
+	<h3>Numero utilisateur :</h3${utilisateurInfo.getNoUtilisateur();}>
+	<h3>Numero utilisateur :</h3${pageScope [NoUtilisateur]}>
+	
 
 <div class="modifier_profil">
 		<a href=""><input type="button" value="Modifier"/></a>

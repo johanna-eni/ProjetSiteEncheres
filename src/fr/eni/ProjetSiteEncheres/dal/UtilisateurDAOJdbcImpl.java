@@ -130,30 +130,70 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 
 	@Override
-	public boolean verificationCouplePseudoMdp(String pseudo, String mot_de_passe) throws BusinessException {
+	public Utilisateur verificationCouplePseudoMdp(String pseudo, String motDePasse) throws BusinessException {
 		
-		boolean etat = false;
+		
 		
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			PreparedStatement pstmt;
 			ResultSet rs;
-			
+		
 				pstmt = cnx.prepareStatement(SELECT_ALL_BY_PSEUDO_AND_MDP);
 				pstmt.setString(1, pseudo);
-				pstmt.setNString(2, mot_de_passe);
+				pstmt.setString(2, motDePasse);
 				rs = pstmt.executeQuery();
 				
+				int noUtilisateur = 0;
+				String nom = null;
+				String prenom = null;
+				String email = null;
+				String telephone = null;
+				String rue = null;
+				String codePostal = null;
+				String ville = null;
+				int credit = 0;
+				int administrateur = 0;
 				
 				while (rs.next()) {
-					etat = true;
+					noUtilisateur = rs.getInt("no_utilisateur");
+					pseudo = rs.getString("pseudo");
+					nom = rs.getString("nom");
+					prenom = rs.getString("prenom");
+					email = rs.getString("email");
+					telephone = rs.getString("telephone");
+					rue = rs.getString("rue");
+					codePostal = rs.getString("code_postal");
+					ville = rs.getString("ville");
+					motDePasse = rs.getString("mot_de_passe");
+					credit = rs.getInt("credit");
+					administrateur = rs.getInt("administrateur");
 				}
-	
+				
+				Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit, administrateur);
+				
+				/*utilisateur.setNoUtilisateur(noUtilisateur);
+				utilisateur.setPseudo(pseudo);
+				utilisateur.setNom(nom);
+				utilisateur.setPrenom(prenom);
+				utilisateur.setEmail(email);
+				utilisateur.setTelephone(telephone);
+				utilisateur.setRue(rue);
+				utilisateur.setCodePostal(codePostal);
+				utilisateur.setVille(ville);
+				utilisateur.setMotDePasse(motDePasse);
+				utilisateur.setCredit(credit);
+				utilisateur.setAdministrateur(administrateur);*/
+				
+				System.out.println("ok utilisateur");
+				return utilisateur;
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("echec select pseudo");
 		}
-		return etat;
+		System.out.println("retourne null");
+		return null;
+		
 		
 	}
 }

@@ -54,18 +54,18 @@ public class ServletConnexionMonProfil extends HttpServlet {
 		mot_de_passe = request.getParameter("mot_de_passe");
 
 		//utilisation du constructeur Utilisateur pour chercher un utilisateur dans la base de donnée
-		Utilisateur utilisateur = new Utilisateur(pseudo,mot_de_passe); 
+		//Utilisateur utilisateur = new Utilisateur(pseudo,mot_de_passe); 
 
 		//vérification du mot de passe dans la base de donnée par rapport au pseudo 
 		try {
 			UtilisateurManager utilisateurManager = new UtilisateurManager();
-			Boolean etat = utilisateurManager.verifPseudoMotDePasse(pseudo, mot_de_passe);
+			Utilisateur utilisateurInfo = utilisateurManager.verifPseudoMotDePasse(pseudo, mot_de_passe);
 			
-			if (etat) {
+			if (utilisateurInfo != null) {
 				HttpSession session = request.getSession();
 				
 				session.setAttribute("pseudo", pseudo);
-				
+				session.setAttribute("utilisateurInfo", utilisateurInfo);
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueilConnect.jsp");
 				rd.forward(request, response);
 			}
