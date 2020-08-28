@@ -21,20 +21,20 @@ import javax.sql.DataSource;
 /**
  * Servlet implementation class ServletTestPoolConnexion
  */
-@WebServlet("/ServletDeConnexion")
-public class ServletConnexion extends HttpServlet {
+@WebServlet("/ServletConnexionAccueil")
+public class ServletConnexionAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletConnexion() {
+/**
+* @see HttpServlet#HttpServlet()
+*/
+    public ServletConnexionAccueil() {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+/**
+* @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+*/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out= response.getWriter();
 		
@@ -49,7 +49,7 @@ public class ServletConnexion extends HttpServlet {
 			out.print("La connexion est "+ (cnx.isClosed()?"fermée":"ouverte")+".");
 			//Libération de la connexion. Elle n'est pas fermée mais remise dans le pool
 
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueilNoConnect.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueil.jsp");
 			rd.forward(request, response);
 			
 			
@@ -61,11 +61,10 @@ public class ServletConnexion extends HttpServlet {
 		out.close();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+/**
+* @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

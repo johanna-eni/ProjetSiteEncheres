@@ -6,7 +6,7 @@ import fr.eni.ProjetSiteEncheres.dal.DAOFactory;
 import fr.eni.ProjetSiteEncheres.dal.UtilisateurDAO;
 /**
  * 
- * @author jrigollo2020
+ *  @author jrigollo2020 et VincentGenouel
  *classe v�rifiant les information utilisateur et renvoyant � la dal pour insertion en base
  */
 public class UtilisateurManager {
@@ -14,20 +14,21 @@ public class UtilisateurManager {
 	private UtilisateurDAO utilisateurDAO;
 	
 	public UtilisateurManager() {
-		this.utilisateurDAO=DAOFactory.getUtilisateurDAO();
+		this.utilisateurDAO = DAOFactory.getUtilisateurDAO();
 	}
 	
+//ajout d'un utilisateur (appel DAL pour insertion en base).
 	public Utilisateur ajouterUtilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String code_postal, String ville, String mot_de_passe, String confirmation) throws BusinessException 
 	{
 		
-		
 		Utilisateur utilisateur = null;
-		
+
 		try {
 			utilisateur = new Utilisateur();
 			
-			if  (this.validerPseudo(pseudo) && this.validerMotDePasse(mot_de_passe, confirmation)) {
+//vérif pseudo(caractère alphanumérique et non existance en base) et mot de passe
+			if (this.validerPseudo(pseudo) && this.validerMotDePasse(mot_de_passe, confirmation)) {
 				
 				utilisateur.setPseudo(pseudo);
 				utilisateur.setNom(nom);
@@ -39,6 +40,7 @@ public class UtilisateurManager {
 				utilisateur.setVille(ville);
 				utilisateur.setMotDePasse(mot_de_passe);
 				
+//tentative d'insertion en base
 				this.utilisateurDAO.insert(utilisateur);
 			}
 			
@@ -49,15 +51,15 @@ public class UtilisateurManager {
 	}
 
 		
-	
+
 	private boolean validerPseudo(String pseudo) {
 		
-		//v�rification caract�res alphanum�rique du pseudo
+//vérification caractère alphanumérique du pseudo
 		if(pseudo.matches("\\p{Alnum}")){
 			System.out.println("pseudo error");
 			return false;
 			}
-		//v�rification de la non existance d'un pseudo doublon
+//vérification de la non existance d'un pseudo doublon
 			try {
 				if(this.utilisateurDAO.selectByPseudo(pseudo) != null) {
 				System.out.println("Pseudo d�j� existant en base");
@@ -78,6 +80,7 @@ public class UtilisateurManager {
 		return true;
 	}
 
+//vérification que le pseudo existe en base et que le mot de passe y correspond et retourne un utilisateur
 	public Utilisateur verifPseudoMotDePasse(String pseudo, String mot_de_passe) {
 		Utilisateur utilisateur = new Utilisateur();
 		
@@ -96,7 +99,5 @@ public class UtilisateurManager {
 			e.printStackTrace();
 		}
 		return utilisateur;
-		
 	}
-	
 }

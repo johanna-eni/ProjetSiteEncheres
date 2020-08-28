@@ -47,7 +47,9 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	
+/*
+ * Constructeur
+*/
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 		String rue, String codePostal, String ville, String motDePasse) {
 		super();
@@ -62,14 +64,18 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 
-
+/*
+* Constructeur
+*/
 	public Utilisateur(String pseudo, String motDePasse) {
 		super();	
 		this.pseudo = pseudo;
 		this.motDePasse = motDePasse;
 }
 
-
+/*
+* Constructeur
+*/
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, String confirmation) {
 		super();
@@ -85,11 +91,16 @@ public class Utilisateur {
 		this.confirmation = confirmation;
 	}
 
-
+/*
+* Constructeur
+*/
 	public Utilisateur() {
 		
 	}
 
+/*
+* Constructeur
+*/
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, int credit, int administrateur) {
 		super();
@@ -108,7 +119,7 @@ public class Utilisateur {
 	}
 
 
-	//GETTERS AND SETTERS
+//GETTERS AND SETTERS
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
@@ -256,6 +267,9 @@ public class Utilisateur {
 	public void setConfirmation(String confirmation) {
 		this.confirmation = confirmation;
 	}
+	
+	
+//affichage
 	@Override
 	public String toString() {
 		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom="

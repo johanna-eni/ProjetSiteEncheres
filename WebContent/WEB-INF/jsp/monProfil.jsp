@@ -19,13 +19,13 @@
 	<h4>Code postal : ${ utilisateurInfo.codePostal } </h3>
 	<h4>Ville : ${ utilisateurInfo.ville } </h3>
 	
-	
-	
-	
-	
 
 <div class="modifier_profil">
-		<a href=""><input type="button" value="Modifier"/></a>
+		<a href="<%=request.getContextPath()%>/ServletModifierMonProfil"><input type="button" value="Modifier"/></a>
+</div>
+
+<div class="modifier_profil">
+		<a href="<%=request.getContextPath()%>/jsp/accueilConnexionMonProfil.jsp"><input type="button" value="Retour"/></a>
 </div>
 
 </body>

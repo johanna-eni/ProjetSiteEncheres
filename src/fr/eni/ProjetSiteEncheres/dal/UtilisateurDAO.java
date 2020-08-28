@@ -14,8 +14,4 @@ public interface UtilisateurDAO {
 	public void delete(int noUtilisateur) throws BusinessException;
 	public Utilisateur selectByPseudo(String pseudo) throws BusinessException;
 	public Utilisateur verificationCouplePseudoMdp(String pseudo, String mot_de_passe) throws BusinessException;
-	/*
-	public List<ListeUtilisateur> selectAll () throws BusinessException;
-	public ListeUtilisateur selectByNoUtilisateur(int noUtilisateur) throws BusinessException;*/
-	
 }

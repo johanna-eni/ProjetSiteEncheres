@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>ProjetEncheres</display-name>
+  <display-name>ProjetSiteEncheres</display-name>
   <welcome-file-list>
     <welcome-file>index</welcome-file>
   </welcome-file-list>
   <servlet>
-    <description>Paramétrage de la jsp acceuilNoConnect</description>
-    <servlet-name>acceuilNoConnect</servlet-name>
-    <jsp-file>/WEB-INF/jsp/acceuilNoConnect.jsp</jsp-file>
+    <description>Paramétrage de la jsp acceuil</description>
+    <servlet-name>acceuil</servlet-name>
+    <jsp-file>/WEB-INF/jsp/acceuil.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>acceuilNoConnect</servlet-name>
-    <url-pattern>/jsp/acceuilNoConnect.jsp</url-pattern>
+    <servlet-name>acceuil</servlet-name>
+    <url-pattern>/jsp/acceuil.jsp</url-pattern>
   </servlet-mapping>
   <servlet>
     <description>Paramétrage de la jsp FormulaireInscription</description>
@@ -41,13 +41,13 @@
     <url-pattern>/jsp/envoieEmail.jsp</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description>Paramétrage de la jsp Accueil</description>
-    <servlet-name>accueilConnect</servlet-name>
-    <jsp-file>/WEB-INF/jsp/accueilConnect.jsp</jsp-file>
+    <description>Paramétrage de la jsp Accueil connexion mon profil</description>
+    <servlet-name>accueilConnexionMonProfil</servlet-name>
+    <jsp-file>/WEB-INF/jsp/accueilConnexionMonProfil.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>accueilConnect</servlet-name>
-    <url-pattern>/jsp/accueilConnect.jsp</url-pattern>
+    <servlet-name>accueilConnexionMonProfil</servlet-name>
+    <url-pattern>/jsp/accueilConnexionMonProfil.jsp</url-pattern>
   </servlet-mapping>
   <servlet>
     <description>Paramétrage de la jsp mon profil</description>

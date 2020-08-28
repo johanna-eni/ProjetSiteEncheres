@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.ProjetSiteEncheres.BusinessException;
 import fr.eni.ProjetSiteEncheres.bll.UtilisateurManager;
@@ -29,7 +30,7 @@ public class ServletInscription extends HttpServlet {
         super();
     }
 
-    //méthode doGet demandant la ressource à la jsp formulaireInscription
+//méthode doGet demandant la ressource à la jsp formulaireInscription
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -38,8 +39,8 @@ public class ServletInscription extends HttpServlet {
 		rd.forward(request, response);
 	}	
 	
-	//méthode do post permetant d'envoyer les informations du formulaire à la classe UtilisateurDAOjdbcImpl
-	//pour ensuite insérer les données dans la base de donnée.
+//méthode do post permetant d'envoyer les informations du formulaire à la classe UtilisateurDAOjdbcImpl
+//pour ensuite insérer les données dans la base de donnée.
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -68,22 +69,33 @@ public class ServletInscription extends HttpServlet {
 		mot_de_passe = request.getParameter("mot_de_passe");
 		confirmation = request.getParameter("confirmation");
 		
-		//utilisation du constructeur Utilisateur pour créer un nouveau utilisateur
+//utilisation du constructeur Utilisateur pour créer un nouveau utilisateur
 		Utilisateur utilisateur = new Utilisateur(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,0,0); 
 
-		//vérification du mot de passe puis insertion de l'utilisateur dans utilisateurDAO
-		
+//vérification du mot de passe puis insertion de l'utilisateur dans utilisateurDAO
 			try {
 				UtilisateurManager utilisateurManager = new UtilisateurManager();
-				utilisateurManager.ajouterUtilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, confirmation);
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/formulaireInscription.jsp");
-				rd.forward(request, response);
+				if (utilisateurManager.ajouterUtilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, confirmation) != null) {
+					Utilisateur utilisateurInfo = utilisateurManager.verifPseudoMotDePasse(pseudo, mot_de_passe);
+					
+					if (utilisateurInfo != null) {
+						HttpSession session = request.getSession();
+						
+						session.setAttribute("pseudo", pseudo);
+						session.setAttribute("utilisateurInfo", utilisateurInfo);
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueilConnexionMonProfil.jsp");
+						rd.forward(request, response);
+					}
+					else {
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/formulaireInscription.jsp");
+						rd.forward(request, response);
+					}
+				}
 			} catch (BusinessException e) {
 				System.out.println("erreur");
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 

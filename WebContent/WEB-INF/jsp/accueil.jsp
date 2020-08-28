@@ -11,7 +11,7 @@
 	<h3>ENI-Enchères</h3>
 	
 	<a href="<%=request.getContextPath()%>\ServletInscription">Inscription</a>
-	<a href="<%=request.getContextPath()%>\ServletConnexionMonProfil">Se connecter</a>
+	<a href="<%=request.getContextPath()%>\ServletConnexionUtilisateur">Se connecter</a>
 	
 	<h3>Liste des enchères</h3>
 	

@@ -2,18 +2,23 @@ package fr.eni.ProjetSiteEncheres.bo;
 
 public class Retrait {
 
-	
+//création des variables
 	private String rue;
 	private String codePostal;
 	private String ville;
 	private ArticleVendu articleVendu;
 	
+/*
+* Constructeur
+*/
 	public Retrait(String rue, String codePostal, String ville) {
 		super();
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.ville = ville;
 	}
+	
+//getters et setters
 	public String getRue() {
 		return rue;
 	}
@@ -39,13 +44,9 @@ public class Retrait {
 		this.articleVendu = articleVendu;
 	}
 
-	
+//affichage
 	@Override
 	public String toString() {
 		return "Retrait [rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville + "]";
 	}
-
-
-	
-	
 }

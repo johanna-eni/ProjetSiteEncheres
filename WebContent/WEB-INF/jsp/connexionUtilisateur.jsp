@@ -9,11 +9,11 @@
 <body>
 	<h1>Page de connexion</h1>
 	
-	<form action="<%=request.getContextPath()%>/ServletConnexionMonProfil" method="post">
+	<form action="<%=request.getContextPath()%>/ServletConnexionUtilisateur" method="post">
 		<label for="pseudo">Pseudo :</label>
 		<input type="text" name="pseudo" value=""><br>
 		
-		<label for="mot_de_passe">Not de passe :</label>
+		<label for="mot_de_passe">Mot de passe :</label>
 		<input type="password" name="mot_de_passe" value=""><br>
 		
 		<label for="connexion"></label>

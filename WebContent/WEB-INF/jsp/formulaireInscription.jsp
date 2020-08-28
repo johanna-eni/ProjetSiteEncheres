@@ -41,7 +41,7 @@
 		<input type="password" name="confirmation" value=""><br>
 		
 		<input type="submit" value="Créer"/>
-		<a href="<%=request.getContextPath()%>/ServletDeConnexion"><input type="button" value="Annuler"></a>
+		<a href="<%=request.getContextPath()%>/ServletConnexionAccueil"><input type="button" value="Annuler"></a>
 	</form>
 
 </body>

@@ -11,7 +11,7 @@ public class Enchere {
 	
 	private ArticleVendu articleVendu;
 	
-	//Constructeur 
+//Constructeur 
 	
 	public Enchere(LocalDate dateEncheres, int montantEnchere) {
 		super();
@@ -41,7 +41,7 @@ public class Enchere {
 		this.articleVendu = articleVendu;
 	}
 
-
+//affichage
 	@Override
 	public String toString() {
 		return "Enchere [dateEncheres=" + dateEncheres + ", montantEnchere=" + montantEnchere + "]";

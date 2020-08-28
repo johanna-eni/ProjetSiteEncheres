@@ -1,8 +1,8 @@
 package fr.eni.ProjetSiteEncheres.bo;
 /**
  * 
- * @author jrigollo2020
- *classe définissant la catégorie d'un article
+ * @author jrigollo2020 et VincentGenouel
+ *classe dï¿½finissant la catï¿½gorie d'un article
  */
 import java.util.List;
 
@@ -51,14 +51,9 @@ public class Categorie {
 		this.articleVendu = articleVendu;
 	}
 	
-	
+//affichage
 	@Override
 	public String toString() {
 		return "Categorie [noCategorie=" + noCategorie + ", libelle=" + libelle + "]";
 	}
-
-
-	
-	
-	
 }
