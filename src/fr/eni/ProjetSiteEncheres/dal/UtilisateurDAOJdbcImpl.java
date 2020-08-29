@@ -22,6 +22,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values(?,?,?,?,?,?,?,?,?,?,?);";
 	private static final String DELETE_UTILISATEUR = "delete from utilisateurs where no_utilisateur = ?" ;
 	private static final String SELECT_BY_PSEUDO =	"SELECT * from UTILISATEURS where pseudo = ?";
+	private static final String SELECT_BY_EMAIL =	"SELECT * from UTILISATEURS where email = ?";
 	private static final String SELECT_ALL_BY_PSEUDO_AND_MDP =	"SELECT * from UTILISATEURS where pseudo = ? AND mot_de_passe = ?";
 
 //m�thode insert pour ins�rer un utilisateur en base de donn�e
@@ -179,6 +180,32 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		}
 		System.out.println("retourne null");
 		return null;
+	}
+
+	@Override
+	public boolean selectByEmail(String email) throws BusinessException {
+		
+		boolean exist = false;
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			Utilisateur utilisateur = new Utilisateur();
+			PreparedStatement pstmt;
+			ResultSet rs;
+			
+				pstmt = cnx.prepareStatement(SELECT_BY_EMAIL);
+				pstmt.setString(1, email);
+				rs = pstmt.executeQuery();
+				
+			if (rs.next()) {
+				exist = true;
+			}
+			else {
+				exist = false;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return exist;
 	}
 }
 	

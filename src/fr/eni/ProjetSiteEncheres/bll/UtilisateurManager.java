@@ -7,7 +7,7 @@ import fr.eni.ProjetSiteEncheres.dal.UtilisateurDAO;
 /**
  * 
  *  @author jrigollo2020 et VincentGenouel
- *classe v�rifiant les information utilisateur et renvoyant � la dal pour insertion en base
+ *classe vï¿½rifiant les information utilisateur et renvoyant ï¿½ la dal pour insertion en base
  */
 public class UtilisateurManager {
 
@@ -27,8 +27,8 @@ public class UtilisateurManager {
 		try {
 			utilisateur = new Utilisateur();
 			
-//vérif pseudo(caractère alphanumérique et non existance en base) et mot de passe
-			if (this.validerPseudo(pseudo) && this.validerMotDePasse(mot_de_passe, confirmation)) {
+//vÃ©rif pseudo(caractÃ¨re alphanumÃ©rique et non existance en base) et mot de passe
+			if (this.validerPseudo(pseudo) && this.valdierEmail(email) && this.validerMotDePasse(mot_de_passe, confirmation)) {
 				
 				utilisateur.setPseudo(pseudo);
 				utilisateur.setNom(nom);
@@ -43,33 +43,61 @@ public class UtilisateurManager {
 //tentative d'insertion en base
 				this.utilisateurDAO.insert(utilisateur);
 			}
+			else {
+				utilisateur= null;
+				System.out.println("info inccorecte");
+			}
 			
 		}catch (BusinessException e) {
-			System.out.println("impossible d'ins�rer l'utilisateur");
+			System.out.println("impossible d'insï¿½rer l'utilisateur");
 		}
 		return utilisateur;
 	}
 
 		
 
+	private boolean valdierEmail(String email) {
+
+		boolean ok = false;
+		//vÃ©rification de la non existance d'un email doublon
+		try {
+			if(this.utilisateurDAO.selectByEmail(email)) {
+			System.out.println("Email déja existant en base");
+			ok = false;
+			}
+			else {
+				ok = true;
+			}
+		}
+		catch (BusinessException e) {
+		}
+		return ok; 
+}
+
 	private boolean validerPseudo(String pseudo) {
 		
-//vérification caractère alphanumérique du pseudo
+//vÃ©rification caractÃ¨re alphanumÃ©rique du pseudo
+		
+		boolean ok = false;
 		if(pseudo.matches("\\p{Alnum}")){
 			System.out.println("pseudo error");
-			return false;
+			ok =false;
 			}
-//vérification de la non existance d'un pseudo doublon
+		
+//vÃ©rification de la non existance d'un pseudo doublon
+		
 			try {
 				if(this.utilisateurDAO.selectByPseudo(pseudo) != null) {
-				System.out.println("Pseudo d�j� existant en base");
-				return false;
+				System.out.println("Pseudo déja existant en base");
+				ok = false;
+				}
+				else {
+					ok = true;
 				}
 			}
 			catch (BusinessException e) {
 			}
-			return true; 
-			
+			return ok; 
 	}
 
 	private boolean validerMotDePasse(String mot_de_passe, String confirmation) {
@@ -80,19 +108,18 @@ public class UtilisateurManager {
 		return true;
 	}
 
-//vérification que le pseudo existe en base et que le mot de passe y correspond et retourne un utilisateur
+//vÃ©rification que le pseudo existe en base et que le mot de passe y correspond et retourne un utilisateur
 	public Utilisateur verifPseudoMotDePasse(String pseudo, String mot_de_passe) {
 		Utilisateur utilisateur = new Utilisateur();
 		
 		try {
 			if (this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe) != null) {
 				utilisateur = this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe);
-				System.out.println("vérif ok (manager)");
-				return utilisateur;
+				System.out.println("vÃ©rif ok (manager)");
 			}
 			else {
-				System.out.println("vérif no OK (manager)");
-				return null;
+				System.out.println("vÃ©rif no OK (manager)");
+				utilisateur = null;
 			}
 		}
 		catch (BusinessException e) {

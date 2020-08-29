@@ -74,6 +74,7 @@ public class ServletInscription extends HttpServlet {
 
 //vérification du mot de passe puis insertion de l'utilisateur dans utilisateurDAO
 			try {
+				boolean ok = false;
 				UtilisateurManager utilisateurManager = new UtilisateurManager();
 				if (utilisateurManager.ajouterUtilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, confirmation) != null) {
 					Utilisateur utilisateurInfo = utilisateurManager.verifPseudoMotDePasse(pseudo, mot_de_passe);
@@ -87,7 +88,7 @@ public class ServletInscription extends HttpServlet {
 						rd.forward(request, response);
 					}
 					else {
-						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/formulaireInscription.jsp");
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueil.jsp");
 						rd.forward(request, response);
 					}
 				}
