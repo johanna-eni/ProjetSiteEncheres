@@ -4,8 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<jsp:include page="/WEB-INF/fragments/fragmentCDNBoostrap.jspf"></jsp:include>
+
 <title>Accueil</title>
 </head>
+
 <body>
 
 	<h3>ENI-Enchères</h3>
@@ -50,6 +54,6 @@
 	
 	
 	
-	
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
