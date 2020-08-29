@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>ProjetSiteEncheres</display-name>
+  <display-name>ProjetEncheres</display-name>
   <welcome-file-list>
-    <welcome-file>index</welcome-file>
+    <welcome-file>acceuil.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description>Paramétrage de la jsp acceuil</description>
@@ -58,4 +58,16 @@
     <servlet-name>monProfil</servlet-name>
     <url-pattern>/jsp/monProfil.jsp</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description>Paramétrage de la jsp formulaire Modifier Profil</description>
+    <servlet-name>formulaireModifierProfil</servlet-name>
+    <jsp-file>/WEB-INF/jsp/formulaireModifierProfil.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>formulaireModifierProfil</servlet-name>
+    <url-pattern>/jsp/formulaireModifierProfil.jsp</url-pattern>
+  </servlet-mapping>
+  
+  
+  
 </web-app>

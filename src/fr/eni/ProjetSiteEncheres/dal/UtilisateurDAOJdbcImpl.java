@@ -24,7 +24,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String SELECT_BY_PSEUDO =	"SELECT * from UTILISATEURS where pseudo = ?";
 	private static final String SELECT_BY_EMAIL =	"SELECT * from UTILISATEURS where email = ?";
 	private static final String SELECT_ALL_BY_PSEUDO_AND_MDP =	"SELECT * from UTILISATEURS where pseudo = ? AND mot_de_passe = ?";
-
+	private static final String 
+	
 //m�thode insert pour ins�rer un utilisateur en base de donn�e
 	@Override
 	public void insert(Utilisateur utilisateur) throws BusinessException {
@@ -207,6 +208,32 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		}
 		return exist;
 	}
+
+	@Override
+	public void modifyUtilisateur(Utilisateur utilisateurModifie) throws BusinessException {
+		
+		try(Connection cnx = ConnectionProvider.getConnection()) 
+		{
+			try
+			{
+				cnx.setAutoCommit(false);
+				PreparedStatement pstmt;
+				ResultSet rs;
+
+					pstmt = cnx.prepareStatement(INSERT_UTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS);
+					stmt = cnx.createStatement();
+		
+		}catch(SQLException e) {
+			
+		}
+			
+			
+			
+			
+	}catch(SQLException e){
+		
+	}
+}
 }
 	
 	

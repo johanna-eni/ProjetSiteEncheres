@@ -10,18 +10,19 @@
 
 <h3>ENI-Encheres</h3>
 	
-	<h4>Pseudo : ${ utilisateurInfo.pseudo } </h3>
-	<h4>Nom : ${ utilisateurInfo.nom } </h3>
-	<h4>Prenom : ${ utilisateurInfo.prenom } </h3>
-	<h4>Email : ${ utilisateurInfo.email } </h3>
-	<h4>Téléphone : ${ utilisateurInfo.telephone } </h3>
-	<h4>Rue : ${ utilisateurInfo.rue } </h3>
-	<h4>Code postal : ${ utilisateurInfo.codePostal } </h3>
-	<h4>Ville : ${ utilisateurInfo.ville } </h3>
-	
+	<div style="text-align:center">
+	<h4>Pseudo : ${ utilisateurInfo.pseudo } </h4>
+	<h4>Nom : ${ utilisateurInfo.nom } </h4>
+	<h4>Prenom : ${ utilisateurInfo.prenom } </h4>
+	<h4>Email : ${ utilisateurInfo.email } </h4>
+	<h4>Téléphone : ${ utilisateurInfo.telephone } </h4>
+	<h4>Rue : ${ utilisateurInfo.rue } </h4>
+	<h4>Code postal : ${ utilisateurInfo.codePostal } </h4>
+	<h4>Ville : ${ utilisateurInfo.ville } </h4>
+	</div>
 
 <div class="modifier_profil">
-		<a href="<%=request.getContextPath()%>/ServletModifierMonProfil"><input type="button" value="Modifier"/></a>
+		<a href="<%=request.getContextPath()%>/jsp/formulaireModifierProfil.jsp"><input type="button" value="Modifier"/></a>
 </div>
 
 <div class="modifier_profil">

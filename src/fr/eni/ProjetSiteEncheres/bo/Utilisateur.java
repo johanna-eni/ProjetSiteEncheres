@@ -13,6 +13,7 @@ public class Utilisateur {
  * variables et constantes
  */
 	private int noUtilisateur;
+	private String premierPseudo;
 	private String pseudo;
 	private String nom;
 	private String prenom;
@@ -25,6 +26,7 @@ public class Utilisateur {
 	private String confirmation;
 	private int credit;
 	private int administrateur;
+	private String nvxMotDePasse;
 	
 	private List<ArticleVendu> articleVendu;
 	private List<Enchere> enchere;
@@ -48,7 +50,8 @@ public class Utilisateur {
 	}
 
 /*
- * Constructeur
+ * Constructeur d'insertion en base de donnée 
+ * no utilisateur + crédit + administrateur auto généré par bdd
 */
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 		String rue, String codePostal, String ville, String motDePasse) {
@@ -65,7 +68,7 @@ public class Utilisateur {
 	}
 
 /*
-* Constructeur
+* Constructeur validation couple pseudo mot de passe
 */
 	public Utilisateur(String pseudo, String motDePasse) {
 		super();	
@@ -74,7 +77,7 @@ public class Utilisateur {
 }
 
 /*
-* Constructeur
+* Constructeur validation inscription
 */
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, String confirmation) {
@@ -99,9 +102,9 @@ public class Utilisateur {
 	}
 
 /*
-* Constructeur
+* Constructeur général
 */
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, int credit, int administrateur) {
 		super();
 		this.noUtilisateur = noUtilisateur;
@@ -118,8 +121,25 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
+//Constructeur modif utilisateur
+public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			String code_postal, String ville, String mot_de_passe, String confirmation, String nvx_mot_de_passe, String premierPseudo) {
+	super();
+	this.pseudo = pseudo;
+	this.nom = nom;
+	this.prenom = prenom;
+	this.email = email;
+	this.telephone = telephone;
+	this.rue = rue;
+	this.codePostal = code_postal;
+	this.ville = ville;
+	this.motDePasse = mot_de_passe;
+	this.confirmation = confirmation;
+	this.nvxMotDePasse = nvx_mot_de_passe;
+	this.setPremierPseudo(premierPseudo);
+	}
 
-//GETTERS AND SETTERS
+	//GETTERS AND SETTERS
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
@@ -268,6 +288,22 @@ public class Utilisateur {
 		this.confirmation = confirmation;
 	}
 	
+	public String getNvxMotDePasse() {
+		return nvxMotDePasse;
+	}
+
+	public void setNvxMotDePasse(String nvxMotDePasse) {
+		this.nvxMotDePasse = nvxMotDePasse;
+	}
+	
+	public String getPremierPseudo() {
+		return premierPseudo;
+	}
+
+	public void setPremierPseudo(String premierPseudo) {
+		this.premierPseudo = premierPseudo;
+	}
+
 	
 //affichage
 	@Override
@@ -277,5 +313,7 @@ public class Utilisateur {
 				+ codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", credit=" + credit
 				+ ", administrateur=" + administrateur + "]";
 	}
+
+
 
 }

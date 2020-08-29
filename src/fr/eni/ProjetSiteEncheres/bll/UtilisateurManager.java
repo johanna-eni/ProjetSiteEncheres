@@ -127,4 +127,35 @@ public class UtilisateurManager {
 		}
 		return utilisateur;
 	}
+
+	public boolean modifierUtilisateur(String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String code_postal, String ville, String mot_de_passe_actuel, String confirmation,
+			String nvxMotDePasse, String premierPseudo) {
+		Utilisateur utilisateurModifie = new Utilisateur();
+		if(this.verifPseudoMotDePasse(premierPseudo, mot_de_passe_actuel) != null) {
+			
+			if(this.validerPseudo(pseudo)&& this.valdierEmail(email) && this.validerMotDePasse(nvxMotDePasse, confirmation)) 
+			{
+				utilisateurModifie.setPseudo(pseudo);
+				utilisateurModifie.setPrenom(prenom);
+				utilisateurModifie.setNom(nom);
+				utilisateurModifie.setEmail(email);
+				utilisateurModifie.setTelephone(telephone);
+				utilisateurModifie.setRue(rue);
+				utilisateurModifie.setCodePostal(code_postal);
+				utilisateurModifie.setVille(ville);
+				utilisateurModifie.setMotDePasse(nvxMotDePasse);
+				
+				this.utilisateurDAO.modify();
+			}
+			
+		}
+		else {
+			
+		}
+		
+		
+		return false;
+	}
+
 }
