@@ -84,14 +84,11 @@ public class ServletModifierMonProfil extends HttpServlet {
 	
 		
 		try {
-			boolean ok = false;
 			UtilisateurManager utilisateurManager = new UtilisateurManager();
 			if(utilisateurManager.modifierUtilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, confirmation, nvxMotDePasse, premierPseudo)) {
-				System.out.println("information modifiées avec succès");
+				System.out.println("servlet ok");
 				
-				
-				
-				
+				System.out.println(utilisateurSession);
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/monProfil.jsp");
 				rd.forward(request, response);
@@ -101,10 +98,9 @@ public class ServletModifierMonProfil extends HttpServlet {
 			}
 			
 		}
-		catch(BusinessException e){
-			
-		e.printStackTrace();
-	
-	}
+		catch(ServletException e)
+		{
+			e.printStackTrace();
+		}
 }
 }

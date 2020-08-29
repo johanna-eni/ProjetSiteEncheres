@@ -24,7 +24,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String SELECT_BY_PSEUDO =	"SELECT * from UTILISATEURS where pseudo = ?";
 	private static final String SELECT_BY_EMAIL =	"SELECT * from UTILISATEURS where email = ?";
 	private static final String SELECT_ALL_BY_PSEUDO_AND_MDP =	"SELECT * from UTILISATEURS where pseudo = ? AND mot_de_passe = ?";
-	private static final String 
+	private static final String MODIFY_UTILISATEUR = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? WHERE pseudo = ?";
 	
 //m�thode insert pour ins�rer un utilisateur en base de donn�e
 	@Override
@@ -36,11 +36,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			{
 				cnx.setAutoCommit(false);
 				PreparedStatement pstmt;
-				Statement stmt;
 				ResultSet rs;
 
 					pstmt = cnx.prepareStatement(INSERT_UTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS);
-					stmt = cnx.createStatement();
 					
 //r�cup�ration des donn�es du formulaire
 										
@@ -210,29 +208,44 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 
 	@Override
-	public void modifyUtilisateur(Utilisateur utilisateurModifie) throws BusinessException {
+	public boolean modifyUtilisateur(Utilisateur utilisateurModifie) throws BusinessException {
 		
+		boolean modifOk = false;
 		try(Connection cnx = ConnectionProvider.getConnection()) 
 		{
 			try
 			{
 				cnx.setAutoCommit(false);
 				PreparedStatement pstmt;
-				ResultSet rs;
 
-					pstmt = cnx.prepareStatement(INSERT_UTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS);
-					stmt = cnx.createStatement();
-		
+					pstmt = cnx.prepareStatement(MODIFY_UTILISATEUR);
+	
+					pstmt.setString(1, utilisateurModifie.getPseudo());
+					pstmt.setString(2, utilisateurModifie.getNom());
+					pstmt.setString(3, utilisateurModifie.getPrenom());
+					pstmt.setString(4, utilisateurModifie.getEmail());
+					pstmt.setString(5, utilisateurModifie.getTelephone());
+					pstmt.setString(6, utilisateurModifie.getRue());
+					pstmt.setString(7, utilisateurModifie.getCodePostal());
+					pstmt.setString(8, utilisateurModifie.getVille());
+					pstmt.setString(9, utilisateurModifie.getNvxMotDePasse());
+					pstmt.setString(10, utilisateurModifie.getPremierPseudo());
+					
+					pstmt.executeUpdate(MODIFY_UTILISATEUR);
+					
+					System.out.println("modification réussie");
+					modifOk = true;
+					
+					
 		}catch(SQLException e) {
-			
+			System.out.println("elements non modifiés");
+			modifOk = false;
 		}
 			
-			
-			
-			
 	}catch(SQLException e){
-		
+		System.out.println("connexion echouée");
 	}
+		return modifOk;
 }
 }
 	

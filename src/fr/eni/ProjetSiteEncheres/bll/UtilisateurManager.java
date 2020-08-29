@@ -130,11 +130,15 @@ public class UtilisateurManager {
 
 	public boolean modifierUtilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String code_postal, String ville, String mot_de_passe_actuel, String confirmation,
-			String nvxMotDePasse, String premierPseudo) {
+			String nvxMotDePasse, String premierPseudo) 
+	{
 		Utilisateur utilisateurModifie = new Utilisateur();
+		boolean ok = false;
+		try {
+		
 		if(this.verifPseudoMotDePasse(premierPseudo, mot_de_passe_actuel) != null) {
 			
-			if(this.validerPseudo(pseudo)&& this.valdierEmail(email) && this.validerMotDePasse(nvxMotDePasse, confirmation)) 
+			if(this.validerPseudo(pseudo) && this.valdierEmail(email) && this.validerMotDePasse(nvxMotDePasse, confirmation)) 
 			{
 				utilisateurModifie.setPseudo(pseudo);
 				utilisateurModifie.setPrenom(prenom);
@@ -145,17 +149,23 @@ public class UtilisateurManager {
 				utilisateurModifie.setCodePostal(code_postal);
 				utilisateurModifie.setVille(ville);
 				utilisateurModifie.setMotDePasse(nvxMotDePasse);
-				
-				this.utilisateurDAO.modify();
+			
+				if(this.utilisateurDAO.modifyUtilisateur(utilisateurModifie)) {
+					System.out.println("BLL OK");
+					
+					ok = true;
+				}
+			
 			}
+			else {
+				System.out.println("no ok");
+				ok = false;
+			}
+		}
+		}
+		catch(BusinessException e) {
 			
 		}
-		else {
-			
-		}
-		
-		
-		return false;
+		return ok;
 	}
-
 }
