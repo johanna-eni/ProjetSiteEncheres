@@ -231,7 +231,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					pstmt.setString(9, utilisateurModifie.getNvxMotDePasse());
 					pstmt.setString(10, utilisateurModifie.getPremierPseudo());
 					
-					pstmt.executeUpdate(MODIFY_UTILISATEUR);
+					pstmt.executeUpdate();
 					
 					System.out.println("modification réussie");
 					modifOk = true;
@@ -239,6 +239,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					
 		}catch(SQLException e) {
 			System.out.println("elements non modifiés");
+			e.printStackTrace();
 			modifOk = false;
 		}
 			
@@ -248,9 +249,5 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		return modifOk;
 }
 }
-	
-	
-	
-
 	
 	
