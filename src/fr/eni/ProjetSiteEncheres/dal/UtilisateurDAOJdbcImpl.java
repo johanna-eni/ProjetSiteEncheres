@@ -18,9 +18,8 @@ import fr.eni.ProjetSiteEncheres.bo.Utilisateur;
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 //private static final String SELECT_ALL = "SELECT no_utilisateur, pseudo FROM LISTE";
-	private static final String SELECT_BY_NO_UTILISATEUR =	"SELECT * from UTILISATEURS where noUtilisateur = ?";
+	private static final String DELETE_UTILISATEUR_BY_NO_UTILISATEUR =	"DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
 	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS(pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values(?,?,?,?,?,?,?,?,?,?,?);";
-	private static final String DELETE_UTILISATEUR = "delete from utilisateurs where no_utilisateur = ?" ;
 	private static final String SELECT_BY_PSEUDO =	"SELECT * from UTILISATEURS where pseudo = ?";
 	private static final String SELECT_BY_EMAIL =	"SELECT * from UTILISATEURS where email = ?";
 	private static final String SELECT_ALL_BY_PSEUDO_AND_MDP =	"SELECT * from UTILISATEURS where pseudo = ? AND mot_de_passe = ?";
@@ -83,24 +82,30 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
 //M�thode permmettant de supprimer un utilisateur par son no Utilisateur
 	@Override
-	public void delete(int noUtilisateur) throws BusinessException {
+	public boolean delete(int no_utilisateur) throws BusinessException {
+		boolean ok = false;
 		try(Connection cnx = ConnectionProvider.getConnection()){
-			
+
 			try {
 				cnx.setAutoCommit(false);
 				PreparedStatement pstmt;
-
-					pstmt = cnx.prepareStatement(DELETE_UTILISATEUR);
-					pstmt.setInt(1, noUtilisateur);
-					pstmt.executeQuery();
+					System.out.println(no_utilisateur);
+					pstmt = cnx.prepareStatement(DELETE_UTILISATEUR_BY_NO_UTILISATEUR);
+					pstmt.setInt(1, no_utilisateur);
+					System.out.println(pstmt);
+					pstmt.executeUpdate();
+					ok = true;
+					
 			} catch (Exception e) {
+				e.printStackTrace();
 				System.out.println("impossible de supprimer cet utilisateur");
 			}
 			
 		} catch (Exception  e) {
 			System.out.println("connexion impossible");
 			e.printStackTrace();
-		}	
+		}
+		return ok;	
 	}
 
 //sélection d'un utilisateur par son pseudo

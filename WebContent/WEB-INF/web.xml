@@ -58,7 +58,7 @@
     <servlet-name>monProfil</servlet-name>
     <url-pattern>/jsp/monProfil.jsp</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description>Paramétrage de la jsp formulaire Modifier Profil</description>
     <servlet-name>formulaireModifierProfil</servlet-name>
     <jsp-file>/WEB-INF/jsp/formulaireModifierProfil.jsp</jsp-file>
@@ -67,7 +67,4 @@
     <servlet-name>formulaireModifierProfil</servlet-name>
     <url-pattern>/jsp/formulaireModifierProfil.jsp</url-pattern>
   </servlet-mapping>
-  
-  
-  
 </web-app>

@@ -50,6 +50,7 @@
 		
 		<input type="submit" value="Valider"/>
 		<a href="<%=request.getContextPath()%>/jsp/monProfil.jsp"><input type="button" value="Annuler"></a>
+		<a href="<%=request.getContextPath()%>/ServletSupprimerCompteUtilisateur"><input type="button" value="Supprimer mon compte"></a>
 	</form>
 	</div>
 </body>

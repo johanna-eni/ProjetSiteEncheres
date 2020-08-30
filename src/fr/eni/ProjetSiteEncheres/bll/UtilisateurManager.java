@@ -168,4 +168,21 @@ public class UtilisateurManager {
 		}
 		return ok;
 	}
+
+	public boolean supprimerUtilisateur(int no_utilisateur) {
+		
+		boolean ok = false;
+		if(no_utilisateur >0) {
+			try {
+				if(this.utilisateurDAO.delete(no_utilisateur)) {
+					System.out.println(no_utilisateur);
+					ok = true;
+				}
+			}
+			catch(BusinessException e) {
+				e.printStackTrace();
+			}
+		}
+		return ok;
+	}
 }
