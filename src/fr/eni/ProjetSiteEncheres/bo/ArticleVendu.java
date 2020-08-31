@@ -124,14 +124,7 @@ public class ArticleVendu {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-	
-	public List<Enchere> getEnchere() {
-		return enchere;
-	}
 
-	public void setEnchere(List<Enchere> enchere) {
-		this.enchere = enchere;
-	}
 
 //affichage
 	@Override
