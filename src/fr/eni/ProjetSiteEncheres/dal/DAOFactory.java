@@ -7,4 +7,8 @@ public class DAOFactory {
 
 		return new UtilisateurDAOJdbcImpl();
 	}
+//Créer une méthode qui instancie ArticleDAOJdbcImp
+	public static ArticleDAO getArticleDAO() {
+		return new ArticleDAOJdbcImpl();
+	}
 }
