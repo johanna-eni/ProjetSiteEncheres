@@ -10,6 +10,7 @@ public class Enchere {
 	private int montantEnchere;
 	
 	private ArticleVendu articleVendu;
+	private Utilisateur utilisateur;
 	
 //Constructeur 
 	
@@ -41,11 +42,20 @@ public class Enchere {
 		this.articleVendu = articleVendu;
 	}
 
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
 //affichage
 	@Override
 	public String toString() {
 		return "Enchere [dateEncheres=" + dateEncheres + ", montantEnchere=" + montantEnchere + "]";
 	}
+
 
 	
 	

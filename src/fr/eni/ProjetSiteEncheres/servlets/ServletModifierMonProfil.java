@@ -77,25 +77,21 @@ public class ServletModifierMonProfil extends HttpServlet {
 		//Récupération du noUtilisateur stocké dans la session
 		premierPseudo = utilisateurSession.getPseudo();
 		
-		Utilisateur modifUtilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, confirmation, nvxMotDePasse, premierPseudo);
-
 		System.out.println(utilisateurSession.getPseudo());
-		
+		System.out.println(nvxMotDePasse);
 	
 		
 		try {
 			UtilisateurManager utilisateurManager = new UtilisateurManager();
-			if(utilisateurManager.modifierUtilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, confirmation, nvxMotDePasse, premierPseudo)) {
-				System.out.println("servlet ok");
+			Utilisateur modifUtilisateur = utilisateurManager.modifierUtilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, confirmation, nvxMotDePasse, premierPseudo);
+			session.setAttribute("utilisateurInfo", modifUtilisateur);
+			System.out.println("servlet ok");
 				
 				System.out.println(utilisateurSession);
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/monProfil.jsp");
 				rd.forward(request, response);
-			}
-			else {
-				System.out.println("info non modifiées");
-			}
+			
 			
 		}
 		catch(ServletException e)

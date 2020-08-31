@@ -87,7 +87,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		try(Connection cnx = ConnectionProvider.getConnection()){
 
 			try {
-				cnx.setAutoCommit(false);
 				PreparedStatement pstmt;
 					System.out.println(no_utilisateur);
 					pstmt = cnx.prepareStatement(DELETE_UTILISATEUR_BY_NO_UTILISATEUR);
@@ -213,16 +212,17 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 
 	@Override
-	public boolean modifyUtilisateur(Utilisateur utilisateurModifie) throws BusinessException {
+	public Utilisateur modifyUtilisateur(Utilisateur utilisateurModifie) throws BusinessException {
 		
 		boolean modifOk = false;
 		try(Connection cnx = ConnectionProvider.getConnection()) 
 		{
 			try
 			{
-				cnx.setAutoCommit(false);
 				PreparedStatement pstmt;
-
+				
+					System.out.println(utilisateurModifie.getNvxMotDePasse());
+					System.out.println(utilisateurModifie.getPrenom());
 					pstmt = cnx.prepareStatement(MODIFY_UTILISATEUR);
 	
 					pstmt.setString(1, utilisateurModifie.getPseudo());
@@ -239,6 +239,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					pstmt.executeUpdate();
 					
 					System.out.println("modification réussie");
+					System.out.println(utilisateurModifie.getPseudo());
+					System.out.println(utilisateurModifie.getPremierPseudo());
 					modifOk = true;
 					
 					
@@ -251,7 +253,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}catch(SQLException e){
 		System.out.println("connexion echouée");
 	}
-		return modifOk;
+		return utilisateurModifie;
 }
 }
 	

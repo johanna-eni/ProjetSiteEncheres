@@ -37,7 +37,7 @@ public class ServletSupprimerCompteUtilisateur extends HttpServlet {
 		HttpSession session = request.getSession();
 		Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurInfo");
 		int no_utilisateur = utilisateurSession.getNoUtilisateur();
-		System.out.println(no_utilisateur);
+		System.out.println("Vincent" + no_utilisateur);
 		
 		try {
 			UtilisateurManager utilisateurManager = new UtilisateurManager();

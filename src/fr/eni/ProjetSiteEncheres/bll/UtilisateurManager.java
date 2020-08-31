@@ -113,13 +113,20 @@ public class UtilisateurManager {
 		Utilisateur utilisateur = new Utilisateur();
 		
 		try {
-			if (this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe) != null) {
-				utilisateur = this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe);
-				System.out.println("vÃ©rif ok (manager)");
+			if (this.utilisateurDAO.selectByPseudo(pseudo) != null) {
+				
+				if (this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe) != null) {
+					utilisateur = this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe);
+					System.out.println("vÃ©rif ok (manager)");
+				}
+				else {
+					System.out.println("vÃ©rif no OK (manager)");
+					utilisateur = null;
+				}
 			}
 			else {
-				System.out.println("vÃ©rif no OK (manager)");
 				utilisateur = null;
+				System.out.println("pseudo inhextitant");
 			}
 		}
 		catch (BusinessException e) {
@@ -128,18 +135,20 @@ public class UtilisateurManager {
 		return utilisateur;
 	}
 
-	public boolean modifierUtilisateur(String pseudo, String nom, String prenom, String email, String telephone,
+	public Utilisateur modifierUtilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String code_postal, String ville, String mot_de_passe_actuel, String confirmation,
 			String nvxMotDePasse, String premierPseudo) 
 	{
 		Utilisateur utilisateurModifie = new Utilisateur();
 		boolean ok = false;
 		try {
+		System.out.println("vérif BLL" + nvxMotDePasse);	
 		
 		if(this.verifPseudoMotDePasse(premierPseudo, mot_de_passe_actuel) != null) {
 			
 			if(this.validerPseudo(pseudo) && this.valdierEmail(email) && this.validerMotDePasse(nvxMotDePasse, confirmation)) 
 			{
+				utilisateurModifie.setPremierPseudo(premierPseudo);
 				utilisateurModifie.setPseudo(pseudo);
 				utilisateurModifie.setPrenom(prenom);
 				utilisateurModifie.setNom(nom);
@@ -148,11 +157,11 @@ public class UtilisateurManager {
 				utilisateurModifie.setRue(rue);
 				utilisateurModifie.setCodePostal(code_postal);
 				utilisateurModifie.setVille(ville);
-				utilisateurModifie.setMotDePasse(nvxMotDePasse);
+				utilisateurModifie.setNvxMotDePasse(nvxMotDePasse);
 			
-				if(this.utilisateurDAO.modifyUtilisateur(utilisateurModifie)) {
+				if(this.utilisateurDAO.modifyUtilisateur(utilisateurModifie) != null) {
 					System.out.println("BLL OK");
-					
+					utilisateurModifie.setMotDePasse(nvxMotDePasse);
 					ok = true;
 				}
 			
@@ -166,7 +175,7 @@ public class UtilisateurManager {
 		catch(BusinessException e) {
 			
 		}
-		return ok;
+		return utilisateurModifie;
 	}
 
 	public boolean supprimerUtilisateur(int no_utilisateur) {

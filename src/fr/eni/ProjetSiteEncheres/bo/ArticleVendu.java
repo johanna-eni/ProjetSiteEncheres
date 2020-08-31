@@ -20,7 +20,6 @@ public class ArticleVendu {
 	private Categorie categorie;
 	private Retrait retrait;
 	private Utilisateur utilisateur;
-	private List<Enchere> enchere;
 	
 //CONSTRUCTEUR
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,

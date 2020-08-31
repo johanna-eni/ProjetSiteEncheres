@@ -28,8 +28,8 @@ public class Utilisateur {
 	private int administrateur;
 	private String nvxMotDePasse;
 	
-	private List<ArticleVendu> articleVendu;
-	private List<Enchere> enchere;
+	private List<ArticleVendu> articlesVendus;
+	private List<Enchere> encheres;
 /*
  * Constructeur
  */
@@ -259,23 +259,23 @@ public Utilisateur(String pseudo, String nom, String prenom, String email, Strin
 		this.administrateur = administrateur;
 	}
 	
-	public List<ArticleVendu> getArticleVendu() {
-		return articleVendu;
+	public List<ArticleVendu> getArticlesVendus() {
+		return articlesVendus;
 	}
 
 
-	public void setArticleVendu(List<ArticleVendu> articleVendu) {
-		this.articleVendu = articleVendu;
+	public void setArticleVendu(List<ArticleVendu> articlesVendus) {
+		this.articlesVendus = articlesVendus;
 	}
 
 
 	public List<Enchere> getEnchere() {
-		return enchere;
+		return encheres;
 	}
 
 
 	public void setEnchere(List<Enchere> enchere) {
-		this.enchere = enchere;
+		this.encheres = encheres;
 	}
 	
 
