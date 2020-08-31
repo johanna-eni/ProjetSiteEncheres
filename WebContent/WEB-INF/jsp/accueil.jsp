@@ -3,7 +3,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="W-UA-Compatible" content="ie=edge">
@@ -25,7 +24,6 @@
 		<span class="col-md-12 visible-md alert alert-success">medium</span>
 		<span class="col-lg-12 visible-lg alert alert-warning">large</span>
 	</div>
-	
 	
 	<div class="row align-items-center;">
 		<div class="hautDePage">

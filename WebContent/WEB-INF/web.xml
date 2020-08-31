@@ -67,4 +67,13 @@
     <servlet-name>formulaireModifierProfil</servlet-name>
     <url-pattern>/jsp/formulaireModifierProfil.jsp</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>Paramétrage de la jsp nouvelle vente</description>
+    <servlet-name>nouvelleVente</servlet-name>
+    <jsp-file>/WEB-INF/jsp/nouvelleVente.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>nouvelleVente</servlet-name>
+    <url-pattern>/jsp/nouvelleVente.jsp</url-pattern>
+  </servlet-mapping>
 </web-app>
