@@ -43,7 +43,6 @@ public class ServletModifierMonProfil extends HttpServlet {
 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		UtilisateurDAOJdbcImpl utilisateurDAO = new UtilisateurDAOJdbcImpl();
 		String pseudo = null;
 		String nom = null;
 		String prenom = null;

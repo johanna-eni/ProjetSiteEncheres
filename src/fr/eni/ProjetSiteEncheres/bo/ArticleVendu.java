@@ -1,4 +1,5 @@
 package fr.eni.ProjetSiteEncheres.bo;
+import java.sql.Date;
 /**
  * classe d�crivant un article
  */
@@ -11,32 +12,48 @@ public class ArticleVendu {
 	private int noArticle;
 	private String nomArticle;
 	private String description;
-	private LocalDate dateDebutEncheres;
-	private LocalDate dateFinEncheres;
+	private Date dateDebutEncheres;
+	private Date dateFinEncheres;
 	private int miseAPrix;
 	private int prixVente;
 	private int etatVente;
+	private int noUtilisateur;
 	
 	private Categorie categorie;
 	private Retrait retrait;
 	private Utilisateur utilisateur;
 	
 //CONSTRUCTEUR
-	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int miseAPrix, int prixVente, int etatVente) {
+	public ArticleVendu(String nomArticle, String description, Date dateDebutEncheres,
+			Date dateFinEncheres, int miseAPrix, int prixVente) {
 		super();
-		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
-		this.etatVente = etatVente;
 	}
 
 
-//GETTERS ANS SETTERS
+public ArticleVendu(String nom_article, String description, String categorie, int mise_a_prix,
+			Date date_debut_enchere, Date date_fin_enchere, String retrait_rue, String retrait_c_p,
+			String retrait_ville, int no_utilisateur) {
+		super();
+		this.nomArticle = nom_article;
+		this.description = description;
+		this.miseAPrix = mise_a_prix;
+		this.dateDebutEncheres = date_debut_enchere;
+		this.dateFinEncheres = date_fin_enchere;
+		this.retrait.setRue(retrait_rue);
+		this.retrait.setCodePostal(retrait_c_p);
+		this.retrait.setVille(retrait_ville);
+		this.setNoUtilisateur(no_utilisateur);
+		
+	}
+
+
+	//GETTERS ANS SETTERS
 	public int getNoArticle() {
 		return noArticle;
 	}
@@ -61,19 +78,19 @@ public class ArticleVendu {
 		this.description = description;
 	}
 
-	public LocalDate getDateDebutEncheres() {
+	public Date getDateDebutEncheres() {
 		return dateDebutEncheres;
 	}
 
-	public void setDateDebutEncheres(LocalDate dateDebutEncheres) {
+	public void setDateDebutEncheres(Date dateDebutEncheres) {
 		this.dateDebutEncheres = dateDebutEncheres;
 	}
 
-	public LocalDate getDateFinEncheres() {
+	public Date getDateFinEncheres() {
 		return dateFinEncheres;
 	}
 
-	public void setDateFinEncheres(LocalDate dateFinEncheres) {
+	public void setDateFinEncheres(Date dateFinEncheres) {
 		this.dateFinEncheres = dateFinEncheres;
 	}
 
@@ -132,6 +149,16 @@ public class ArticleVendu {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
 				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + "]";
+	}
+
+
+	public int getNoUtilisateur() {
+		return noUtilisateur;
+	}
+
+
+	public void setNoUtilisateur(int noUtilisateur) {
+		this.noUtilisateur = noUtilisateur;
 	}
 
 	
