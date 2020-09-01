@@ -2,6 +2,8 @@ package fr.eni.ProjetSiteEncheres.servlets;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -55,24 +57,32 @@ public class ServletNouvelleVente extends HttpServlet {
 			//récupération infos formulaire
 			String nom_article = request.getParameter("nom_article");
 			String description = request.getParameter("description");
-			String categorie = request.getParameter("categorie");
+			String nomCategorie = request.getParameter("nom_categorie");
 			int mise_a_prix = Integer.parseInt(request.getParameter("mise_a_prix"));
 			
 			//récupération des dates
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYY-MM-dd");
-			LocalDate date_debut_enchere = LocalDate.parse(request.getParameter("date_debut_enchere"), dtf);
-			LocalDate date_fin_enchere = LocalDate.parse(request.getParameter("date_fin_enchere"), dtf);
+			java.util.Date date_debut_enchere = null;
+			java.util.Date date_fin_enchere = null;
+			try {
+				date_debut_enchere = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date_debut_enchere"));
+				date_fin_enchere = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date_fin_enchere"));
+			} catch (ParseException e1) {
+				System.out.println("les dates ne sont pas prises en compte");
+				e1.printStackTrace();
+			}
 			
+						
 			//récupération des infos du retrait
 			String retrait_rue = request.getParameter("retrait_rue");
 			String retrait_c_p = request.getParameter("retrait_c_p");
 			String retrait_ville = request.getParameter("retrait_ville");
 			
+			//récupérer la sesssion pour récupérer le numéro d'utilisateur en cours
 			HttpSession session = request.getSession();
 			Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurInfo");
 			int no_utilisateur = utilisateurSession.getNoUtilisateur();
 			
-			ArticleVendu nouvelArticle = new ArticleVendu(nom_article, description, categorie, mise_a_prix, date_debut_enchere, date_fin_enchere, retrait_rue, retrait_c_p, retrait_ville,no_utilisateur  );
+			ArticleVendu nouvelArticle = new ArticleVendu(nom_article, description, nomCategorie, mise_a_prix, date_debut_enchere, date_fin_enchere, retrait_rue, retrait_c_p, retrait_ville,no_utilisateur  );
 			
 			try {
 				ArticleManager articleManager = new ArticleManager();

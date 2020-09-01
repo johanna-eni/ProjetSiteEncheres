@@ -12,13 +12,14 @@ public class ArticleVendu {
 	private int noArticle;
 	private String nomArticle;
 	private String description;
-	private Date dateDebutEncheres;
-	private Date dateFinEncheres;
+	private java.util.Date dateDebutEncheres;
+	private java.util.Date dateFinEncheres;
 	private int miseAPrix;
 	private int prixVente;
 	private int etatVente;
 	private int noUtilisateur;
 	
+	//lien vers les autres classes
 	private Categorie categorie;
 	private Retrait retrait;
 	private Utilisateur utilisateur;
@@ -36,8 +37,8 @@ public class ArticleVendu {
 	}
 
 
-public ArticleVendu(String nom_article, String description, String categorie, int mise_a_prix,
-			Date date_debut_enchere, Date date_fin_enchere, String retrait_rue, String retrait_c_p,
+public ArticleVendu(String nom_article, String description, String nomCategorie, int mise_a_prix,
+			java.util.Date date_debut_enchere, java.util.Date date_fin_enchere, String retrait_rue, String retrait_c_p,
 			String retrait_ville, int no_utilisateur) {
 		super();
 		this.nomArticle = nom_article;
@@ -49,8 +50,14 @@ public ArticleVendu(String nom_article, String description, String categorie, in
 		this.retrait.setCodePostal(retrait_c_p);
 		this.retrait.setVille(retrait_ville);
 		this.setNoUtilisateur(no_utilisateur);
+		this.categorie.setLibelle(nomCategorie);
 		
 	}
+
+
+	public ArticleVendu() {
+		super();
+}
 
 
 	//GETTERS ANS SETTERS
@@ -78,7 +85,7 @@ public ArticleVendu(String nom_article, String description, String categorie, in
 		this.description = description;
 	}
 
-	public Date getDateDebutEncheres() {
+	public java.util.Date getDateDebutEncheres() {
 		return dateDebutEncheres;
 	}
 
@@ -86,7 +93,7 @@ public ArticleVendu(String nom_article, String description, String categorie, in
 		this.dateDebutEncheres = dateDebutEncheres;
 	}
 
-	public Date getDateFinEncheres() {
+	public java.util.Date getDateFinEncheres() {
 		return dateFinEncheres;
 	}
 

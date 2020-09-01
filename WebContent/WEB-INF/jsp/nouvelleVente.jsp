@@ -59,11 +59,10 @@
 		
 		<div class="row col-md-4 col-md-offset-4">
 			<div class="container">
-					<label for="categorie">Catégories </label>
-				<select class="" name="categorie" id="categorie">
-					<option value="toutes">Toutes</option>
+					<label for="nom_categorie">Catégories </label>
+				<select class="" name="nom_categorie" id="nom_categorie">
 					<option value="bricolage">Bricolage</option>
-					<option value="jardinnage">Jardinnage</option>
+					<option value="jardinage">Jardinage</option>
 					<option value="equipement_maison">Equipement de la maison</option>
 					<option value="decoration">Décoration</option>
 				</select><br>
@@ -80,7 +79,7 @@
 		<div class="row col-md-4 col-md-offset-4">
 			<div class="container">
 				<label for="mise_a_prix">Mise à prix : </label>
-				<input class="" type="number" step ="10" value="0" min="0" name="mise_a_prix"><br>
+				<input class="" type="number" step ="10" value="10" min="10" max="10000" name="mise_a_prix"><br>
 			</div>
 		</div>
 		
