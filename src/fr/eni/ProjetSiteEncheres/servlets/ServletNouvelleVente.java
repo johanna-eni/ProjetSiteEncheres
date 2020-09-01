@@ -58,9 +58,9 @@ public class ServletNouvelleVente extends HttpServlet {
 		LocalDate date_fin_enchere = LocalDate.parse(request.getParameter("date_fin_enchere"), dtf);
 		
 		//récupération des infos du retrait
-		String retrait_rue = request.getParameter("rue");
+		String retrait_rue = request.getParameter("retrait_rue");
 		String retrait_c_p = request.getParameter("retrait_c_p");
-		String retrait_ville = request.getParameter("ville");
+		String retrait_ville = request.getParameter("retrait_ville");
 	}
 
 }

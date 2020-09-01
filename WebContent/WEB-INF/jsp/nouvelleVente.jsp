@@ -43,8 +43,8 @@
 		<div class="row col-md-4 col-md-offset-4">
 					<div action="<%=request.getContextPath()%>/ServletConnexionUtilisateur" method="post">
 						<div class="container">
-							<label for="nomArticle">Article</label>
-							<input class="" type="text" name="nomArticle" value=""><br>
+							<label for="nom-article">Article</label>
+							<input class="" type="text" name="nom_article" value=""><br>
 						</div>
 					</div>
 			
@@ -59,8 +59,8 @@
 		
 		<div class="row col-md-4 col-md-offset-4">
 			<div class="container">
-					<label for="categorie_selection">Catégories </label>
-				<select class="" name="categorie" id="categorie_selection">
+					<label for="categorie">Catégories </label>
+				<select class="" name="categorie" id="categorie">
 					<option value="toutes">Toutes</option>
 					<option value="bricolage">Bricolage</option>
 					<option value="jardinnage">Jardinnage</option>
@@ -80,21 +80,21 @@
 		<div class="row col-md-4 col-md-offset-4">
 			<div class="container">
 				<label for="mise_a_prix">Mise à prix : </label>
-				<input class="" type="number" step ="" value="0" min="0" name="mise_a_prix"><br>
+				<input class="" type="number" step ="10" value="0" min="0" name="mise_a_prix"><br>
 			</div>
 		</div>
 		
 		<div class="row col-md-4 col-md-offset-4">
 			<div class="container">
-				<label for="debut_enchere">Début de l'enchère </label>
-				<input class="pull-right" type="date" name="debut_enchere"><br>
+				<label for="date_debut_enchere">Début de l'enchère </label>
+				<input class="" type="date" name="date_debut_enchere"><br>
 			</div>
 		</div>
 		
 		<div class="row col-md-4 col-md-offset-4">
 			<div class="container">
-				<label for="fin_enchere">Fin de l'enchère </label>
-				<input class="pull-right" type="date" name="fin_enchere"><br>
+				<label for="date_fin_enchere">Fin de l'enchère </label>
+				<input class="" type="date" name="date_fin_enchere"><br>
 			</div>
 		</div>
 	
@@ -103,14 +103,14 @@
 				<fieldset>
 					<legend>Retrait</legend>
 			
-					<label for="rue">Rue</label>
-					<input type="" name="rue" value=" ${ utilisateurInfo.rue}"><br>
+					<label for="retrait_rue">Rue</label>
+					<input type="text" name="rue" value=" ${ utilisateurInfo.rue}"><br>
 			
-					<label for="rue">Code postal</label>
-					<input type="" name="rue" value=" ${ utilisateurInfo.codePostal}"><br>
+					<label for="retrait_c_p">Code postal</label>
+					<input type="text" name="retrait_c_p" value=" ${ utilisateurInfo.codePostal}"><br>
 			
-					<label for="rue">Ville</label>
-					<input type="" name="rue" value=" ${ utilisateurInfo.ville}"><br>
+					<label for="retrait_ville">Ville</label>
+					<input type="text" name="retrait_ville" value=" ${ utilisateurInfo.ville}"><br>
 				</fieldset>
 			</div>
 		</div>
