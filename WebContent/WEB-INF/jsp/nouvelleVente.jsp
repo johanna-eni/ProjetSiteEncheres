@@ -32,14 +32,14 @@
 	</div>
 	
 	
-	<form>
+	<form  action="<%=request.getContextPath()%>/ServletNouvelleVente" method="post">
 		<div class="row container col-md-4 col-md-offset-4">
 			<div>
 				<img src="" alt="${articleVendu.nomAricle}">
 			</div>
 		</div>
 		<div class="row container col-md-4 col-md-offset-4">
-					<div action="<%=request.getContextPath()%>/ServletConnexionUtilisateur" method="post">
+					<div >
 						<div class="input-group">
 							<label for="nom-article">Article</label>
 							<input align="right" class="input" type="text" name="nom_article" value="">
@@ -113,7 +113,7 @@
 		<div class="row container col-md-4 col-md-offset-4">
 			<div>
 				<p>
-					<a href="<%=request.getContextPath()%>/jsp/accueilConnexionMonProfil.jsp"><input type="button" value="Enregistrer"/></a>
+					<input type="submit" value="Enregistrer"/>
 					<a href="<%=request.getContextPath()%>/jsp/accueilConnexionMonProfil.jsp"><input type="button" value="Annuler"/></a>
 				</p>
 			

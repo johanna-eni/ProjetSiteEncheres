@@ -46,9 +46,9 @@ public ArticleVendu(String nom_article, String description, String nomCategorie,
 		this.miseAPrix = mise_a_prix;
 		this.dateDebutEncheres = date_debut_enchere;
 		this.dateFinEncheres = date_fin_enchere;
-		this.retrait.setRue(retrait_rue);
-		this.retrait.setCodePostal(retrait_c_p);
-		this.retrait.setVille(retrait_ville);
+		this.getRetrait().setRue(retrait_rue);
+		this.getRetrait().setCodePostal(retrait_c_p);
+		this.getRetrait().setVille(retrait_ville);
 		this.setNoUtilisateur(no_utilisateur);
 		this.categorie.setLibelle(nomCategorie);
 		
