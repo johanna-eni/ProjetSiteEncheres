@@ -89,16 +89,16 @@ public ArticleVendu(String nom_article, String description, String nomCategorie,
 		return dateDebutEncheres;
 	}
 
-	public void setDateDebutEncheres(Date dateDebutEncheres) {
-		this.dateDebutEncheres = dateDebutEncheres;
+	public void setDateDebutEncheres(java.util.Date date) {
+		this.dateDebutEncheres = date;
 	}
 
 	public java.util.Date getDateFinEncheres() {
 		return dateFinEncheres;
 	}
 
-	public void setDateFinEncheres(Date dateFinEncheres) {
-		this.dateFinEncheres = dateFinEncheres;
+	public void setDateFinEncheres(java.util.Date date) {
+		this.dateFinEncheres = date;
 	}
 
 	public int getMiseAPrix() {

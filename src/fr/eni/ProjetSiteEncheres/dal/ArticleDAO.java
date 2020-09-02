@@ -4,5 +4,5 @@ import fr.eni.ProjetSiteEncheres.BusinessException;
 import fr.eni.ProjetSiteEncheres.bo.ArticleVendu;
 
 public interface ArticleDAO {
-	public void insert(ArticleVendu articleVendu) throws BusinessException;
+	public boolean insert(ArticleVendu articleVendu) throws BusinessException;
 }

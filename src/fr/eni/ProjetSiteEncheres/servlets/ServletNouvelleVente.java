@@ -53,55 +53,51 @@ public class ServletNouvelleVente extends HttpServlet {
 		
 		
 		ArticleDAOJdbcImpl articleDAO = new ArticleDAOJdbcImpl();
-		try{
-			//récupération infos formulaire
-			String nom_article = request.getParameter("nom_article");
-			String description = request.getParameter("description");
-			String nomCategorie = request.getParameter("nom_categorie");
-			int mise_a_prix = Integer.parseInt(request.getParameter("mise_a_prix"));
-			
-			//récupération des dates
-			java.util.Date date_debut_enchere = null;
-			java.util.Date date_fin_enchere = null;
-			try {
-				date_debut_enchere = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date_debut_enchere"));
-				date_fin_enchere = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date_fin_enchere"));
-			} catch (ParseException e1) {
-				System.out.println("les dates ne sont pas prises en compte");
-				e1.printStackTrace();
-			}
-			
-						
-			//récupération des infos du retrait
-			String retrait_rue = request.getParameter("retrait_rue");
-			String retrait_c_p = request.getParameter("retrait_c_p");
-			String retrait_ville = request.getParameter("retrait_ville");
-			
-			//récupérer la sesssion pour récupérer le numéro d'utilisateur en cours
-			HttpSession session = request.getSession();
-			Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurInfo");
-			int no_utilisateur = utilisateurSession.getNoUtilisateur();
-			
-			ArticleVendu nouvelArticle = new ArticleVendu(nom_article, description, nomCategorie, mise_a_prix, date_debut_enchere, date_fin_enchere, retrait_rue, retrait_c_p, retrait_ville,no_utilisateur  );
-			
-			try {
-				ArticleManager articleManager = new ArticleManager();
-				
-				articleManager.insertArticle(nouvelArticle);
-			}
-			catch(BusinessException e){
-				e.printStackTrace();
-			}
-			
+		//récupération infos formulaire
+		String nom_article = request.getParameter("nom_article");
+		String description = request.getParameter("description");
+		String nomCategorie = request.getParameter("nom_categorie");
+		int mise_a_prix = Integer.parseInt(request.getParameter("mise_a_prix"));
+		
+		//récupération des dates
+		java.util.Date date_debut_enchere = null;
+		java.util.Date date_fin_enchere = null;
+		try {
+			date_debut_enchere = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date_debut_enchere"));
+			date_fin_enchere = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date_fin_enchere"));
+		} catch (ParseException e1) {
+			System.out.println("les dates ne sont pas prises en compte");
+			e1.printStackTrace();
 		}
-		catch(ServletException e){
+		
+					
+		//récupération des infos du retrait
+		String retrait_rue = request.getParameter("retrait_rue");
+		String retrait_c_p = request.getParameter("retrait_c_p");
+		String retrait_ville = request.getParameter("retrait_ville");
+		
+		//récupérer la sesssion pour récupérer le numéro d'utilisateur en cours
+		HttpSession session = request.getSession();
+		Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurInfo");
+		int no_utilisateur = utilisateurSession.getNoUtilisateur();
+		
+		ArticleVendu nouvelArticle = new ArticleVendu(nom_article, description, nomCategorie, mise_a_prix, date_debut_enchere, date_fin_enchere, retrait_rue, retrait_c_p, retrait_ville,no_utilisateur  );
+		
+		try {
+			ArticleManager articleManager = new ArticleManager();
+			
+			if (articleManager.insertArticle(nouvelArticle)) {
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueilConnexionMonProfil.jsp");
+				rd.forward(request, response);
+				
+			}
+			else {
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/nouvelleVente.jsp");
+				rd.forward(request, response);
+			}
+		}
+		catch(Exception e){
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
 	}
-
 }

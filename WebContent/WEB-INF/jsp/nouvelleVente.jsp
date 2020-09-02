@@ -18,47 +18,44 @@
 </head>
 
 <body>
-	<div class="container-fluid col-md-10 col-md-offset-1">
+	<div class="container col-md-10 col-md-offset-1">
 		<span class="col-xs-12 visible-xs alert alert-danger">extra small</span>
 		<span class="col-sm-12 visible-sm alert alert-info">small</span>
 		<span class="col-md-12 visible-md alert alert-success">medium</span>
 		<span class="col-lg-12 visible-lg alert alert-warning">large</span>
 	</div>
 	
-	<div class="row align-items-center;">
+	<div class="container col-md-12 col-md-offset-1">
 		<div class="hautDePage">
-			<div class="col-lg-2">
-				<h3 class="text-left">ENI-Enchères</h3>
-			</div>
+			<h3>ENI-Enchères</h3>
 		</div>
 	</div>
 	
 	
 	<form>
-		<div class="row col-md-4 col-md-offset-4">
-			<div class="container">
-					<img src="" alt="">
+		<div class="row container col-md-4 col-md-offset-4">
+			<div>
+				<img src="" alt="${articleVendu.nomAricle}">
 			</div>
 		</div>
-		<div class="row col-md-4 col-md-offset-4">
+		<div class="row container col-md-4 col-md-offset-4">
 					<div action="<%=request.getContextPath()%>/ServletConnexionUtilisateur" method="post">
-						<div class="container">
+						<div class="input-group">
 							<label for="nom-article">Article</label>
-							<input class="" type="text" name="nom_article" value=""><br>
+							<input align="right" class="input" type="text" name="nom_article" value="">
 						</div>
 					</div>
-			
 		</div>	
 				
-		<div class="row col-md-4 col-md-offset-4">
-			<div class="container">
+		<div class="row container col-md-4 col-md-offset-4">
+			<div>
 				<label for="description">Description : </label>
 				<textarea class="" name="description" rows="5" cols="33"></textarea><br>
 			</div>
 		</div>
 		
-		<div class="row col-md-4 col-md-offset-4">
-			<div class="container">
+		<div class="row container col-md-4 col-md-offset-4">
+			<div>
 					<label for="nom_categorie">Catégories </label>
 				<select class="" name="nom_categorie" id="nom_categorie">
 					<option value="bricolage">Bricolage</option>
@@ -69,36 +66,36 @@
 			</div>
 		</div>
 		
-		<div class="row col-md-4 col-md-offset-4">
-			<div class="container">
+		<div class="row container col-md-4 col-md-offset-4">
+			<div>
 				<label for="photo_article">Photo de l'article </label>
 				<input class="" type="file" id="photo_article" name="photo_article" accept="image/png, image/jpeg"/>
 			</div>
 		</div>
 		
-		<div class="row col-md-4 col-md-offset-4">
-			<div class="container">
+		<div class="row container col-md-4 col-md-offset-4">
+			<div>
 				<label for="mise_a_prix">Mise à prix : </label>
 				<input class="" type="number" step ="10" value="10" min="10" max="10000" name="mise_a_prix"><br>
 			</div>
 		</div>
 		
-		<div class="row col-md-4 col-md-offset-4">
-			<div class="container">
+		<div class="row container col-md-4 col-md-offset-4">
+			<div>
 				<label for="date_debut_enchere">Début de l'enchère </label>
 				<input class="" type="date" name="date_debut_enchere"><br>
 			</div>
 		</div>
 		
-		<div class="row col-md-4 col-md-offset-4">
-			<div class="container">
+		<div class="row container col-md-4 col-md-offset-4">
+			<div>
 				<label for="date_fin_enchere">Fin de l'enchère </label>
 				<input class="" type="date" name="date_fin_enchere"><br>
 			</div>
 		</div>
 	
-		<div class="row col-md-4 col-md-offset-4">
-			<div class="container">
+		<div class="row container col-md-4 col-md-offset-4">
+			<div>
 				<fieldset>
 					<legend>Retrait</legend>
 			
@@ -113,8 +110,8 @@
 				</fieldset>
 			</div>
 		</div>
-		<div class="row col-md-4 col-md-offset-4">
-			<div class="container">
+		<div class="row container col-md-4 col-md-offset-4">
+			<div>
 				<p>
 					<a href="<%=request.getContextPath()%>/jsp/accueilConnexionMonProfil.jsp"><input type="button" value="Enregistrer"/></a>
 					<a href="<%=request.getContextPath()%>/jsp/accueilConnexionMonProfil.jsp"><input type="button" value="Annuler"/></a>

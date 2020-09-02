@@ -72,7 +72,7 @@ public class UtilisateurManager {
 		catch (BusinessException e) {
 		}
 		return ok; 
-}
+		}
 
 	private boolean validerPseudo(String pseudo) {
 		
@@ -82,7 +82,7 @@ public class UtilisateurManager {
 		if(pseudo.matches("\\p{Alnum}")){
 			System.out.println("pseudo error");
 			ok =false;
-			}
+		}
 		
 //vÃ©rification de la non existance d'un pseudo doublon
 		
