@@ -37,20 +37,17 @@ public class ArticleVendu {
 	}
 
 
-public ArticleVendu(String nom_article, String description, String nomCategorie, int mise_a_prix,
-			java.util.Date date_debut_enchere, java.util.Date date_fin_enchere, String retrait_rue, String retrait_c_p,
-			String retrait_ville, int no_utilisateur) {
+public ArticleVendu(String nom_article, String description, Categorie infosCategorie, int mise_a_prix,
+			java.util.Date date_debut_enchere, java.util.Date date_fin_enchere, Retrait infosRetrait, int no_utilisateur) {
 		super();
 		this.nomArticle = nom_article;
 		this.description = description;
 		this.miseAPrix = mise_a_prix;
 		this.dateDebutEncheres = date_debut_enchere;
 		this.dateFinEncheres = date_fin_enchere;
-		this.getRetrait().setRue(retrait_rue);
-		this.getRetrait().setCodePostal(retrait_c_p);
-		this.getRetrait().setVille(retrait_ville);
+		this.retrait = infosRetrait;
 		this.setNoUtilisateur(no_utilisateur);
-		this.categorie.setLibelle(nomCategorie);
+		this.categorie = infosCategorie;
 		
 	}
 

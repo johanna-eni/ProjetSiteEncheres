@@ -51,7 +51,15 @@ public class ArticleManager {
 					System.out.println("nomArticle ok");
 					articleVendu.setNomArticle(nouvelArticle.getNomArticle());
 					articleVendu.setDescription(nouvelArticle.getDescription());
-					articleVendu.getCategorie().setNoCategorie(this.attributionNoCategorie(nouvelArticle.getCategorie().getLibelle()));
+					
+					
+					//retourne le no_categorie correspondant au libelle
+					int no_categorie = (this.attributionNoCategorie(nouvelArticle.getCategorie().getLibelle()));
+					//Création de l'objet Categorie 
+					Categorie categorie = new Categorie(no_categorie, nouvelArticle.getCategorie().getLibelle());
+					//Inclusion de la categorie à articleVendu
+					articleVendu.setCategorie(categorie);
+					
 					//etatVente à 0 (vente en cours) à 1 (vente fini)
 					articleVendu.setEtatVente(0);
 					//numero utilisateur
@@ -63,10 +71,9 @@ public class ArticleManager {
 					//date fin enchère
 					articleVendu.setDateFinEncheres(nouvelArticle.getDateFinEncheres());	
 					//information de retrait
-					articleVendu.getRetrait().setCodePostal(nouvelArticle.getRetrait().getCodePostal());
-					articleVendu.getRetrait().setRue(nouvelArticle.getRetrait().getRue());
-					articleVendu.getRetrait().setVille(nouvelArticle.getRetrait().getCodePostal());
 					
+					Retrait retrait = new Retrait(nouvelArticle.getRetrait().getRue(),nouvelArticle.getRetrait().getCodePostal(), nouvelArticle.getRetrait().getVille());
+					articleVendu.setRetrait(retrait);
 					System.out.println(articleVendu);
 					
 					if (this.articleDAO.insert(nouvelArticle)) {

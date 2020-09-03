@@ -45,14 +45,6 @@
 						<input class="input" type="text" name="nom_article" value="">
 					</div>
 		</div>	
-		
-		
-		<div class="row">
-					
-						<label class="col-md-2 col-md-offset-4" for="nom-article">Article</label>
-						<input class="input col-md-2 col-md-offset-6" type="text" name="nom_article" value="">
-					
-		</div>	
 				
 		<div class="row container col-md-4 col-md-offset-4">
 			<div>

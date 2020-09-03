@@ -18,6 +18,8 @@ import javax.servlet.http.HttpSession;
 import fr.eni.ProjetSiteEncheres.BusinessException;
 import fr.eni.ProjetSiteEncheres.bll.ArticleManager;
 import fr.eni.ProjetSiteEncheres.bo.ArticleVendu;
+import fr.eni.ProjetSiteEncheres.bo.Categorie;
+import fr.eni.ProjetSiteEncheres.bo.Retrait;
 import fr.eni.ProjetSiteEncheres.bo.Utilisateur;
 import fr.eni.ProjetSiteEncheres.dal.ArticleDAOJdbcImpl;
 
@@ -56,7 +58,7 @@ public class ServletNouvelleVente extends HttpServlet {
 		//récupération infos formulaire
 		String nom_article = request.getParameter("nom_article");
 		String description = request.getParameter("description");
-		String nomCategorie = request.getParameter("nom_categorie");
+		String libelle = request.getParameter("nom_categorie");
 		int mise_a_prix = Integer.parseInt(request.getParameter("mise_a_prix"));
 		
 		//récupération des dates
@@ -70,7 +72,7 @@ public class ServletNouvelleVente extends HttpServlet {
 			e1.printStackTrace();
 		}
 		
-					
+			
 		//récupération des infos du retrait
 		String retrait_rue = request.getParameter("retrait_rue");
 		String retrait_c_p = request.getParameter("retrait_c_p");
@@ -81,7 +83,11 @@ public class ServletNouvelleVente extends HttpServlet {
 		Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurInfo");
 		int no_utilisateur = utilisateurSession.getNoUtilisateur();
 		
-		ArticleVendu nouvelArticle = new ArticleVendu(nom_article, description, nomCategorie, mise_a_prix, date_debut_enchere, date_fin_enchere, retrait_rue, retrait_c_p, retrait_ville,no_utilisateur  );
+		
+		Retrait infosRetrait = new Retrait(retrait_rue, retrait_c_p, retrait_ville);
+		Categorie infosCategorie = new Categorie(0, libelle);
+		ArticleVendu nouvelArticle = new ArticleVendu(nom_article, description, infosCategorie, mise_a_prix, date_debut_enchere, date_fin_enchere, infosRetrait,no_utilisateur  );
+	
 		
 		try {
 			ArticleManager articleManager = new ArticleManager();
