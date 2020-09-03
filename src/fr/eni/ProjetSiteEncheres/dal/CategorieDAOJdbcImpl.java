@@ -9,7 +9,7 @@ import fr.eni.ProjetSiteEncheres.BusinessException;
 
 public class CategorieDAOJdbcImpl implements CategorieDAO {
 	
-	private static final String SELECT_LIBELLE_INTO_CATEGORIE = "SELECT no_categorie from CATEGORIES where libelle = ?";
+	private static final String SELECT_LIBELLE_INTO_CATEGORIE = "SELECT * FROM CATEGORIES where libelle = ?";
 
 	@Override
 	public int select(String libelle) throws BusinessException {
@@ -23,15 +23,15 @@ public class CategorieDAOJdbcImpl implements CategorieDAO {
 				PreparedStatement pstmt;
 				ResultSet rs;
 
-					pstmt = cnx.prepareStatement(SELECT_LIBELLE_INTO_CATEGORIE);
+				pstmt = cnx.prepareStatement(SELECT_LIBELLE_INTO_CATEGORIE, PreparedStatement.RETURN_GENERATED_KEYS);
+				
+				pstmt.setString(1, libelle);
+				pstmt.executeQuery();
+				rs = pstmt.getGeneratedKeys();
 					
-					pstmt.setString(1, libelle);
-					rs = pstmt.executeQuery();
-					
-					if (rs.next()) {
-						return no_categorie;
-					}
-					
+				if (rs.next()) {
+					no_categorie = rs.getInt(1);
+				}
 			}
 			catch (SQLException r)
 			{
@@ -41,7 +41,7 @@ public class CategorieDAOJdbcImpl implements CategorieDAO {
 		catch (Exception e){
 			
 		}
-		return 0;
+		return no_categorie;
 	}
 
 }
