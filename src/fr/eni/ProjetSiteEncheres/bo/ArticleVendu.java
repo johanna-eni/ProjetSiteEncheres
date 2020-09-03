@@ -12,8 +12,8 @@ public class ArticleVendu {
 	private int noArticle;
 	private String nomArticle;
 	private String description;
-	private java.util.Date dateDebutEncheres;
-	private java.util.Date dateFinEncheres;
+	private LocalDate dateDebutEncheres;
+	private LocalDate dateFinEncheres;
 	private int miseAPrix;
 	private int prixVente;
 	private int etatVente;
@@ -25,8 +25,8 @@ public class ArticleVendu {
 	private Utilisateur utilisateur;
 	
 //CONSTRUCTEUR
-	public ArticleVendu(String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, int miseAPrix, int prixVente) {
+	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int miseAPrix, int prixVente) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -38,7 +38,7 @@ public class ArticleVendu {
 
 
 public ArticleVendu(String nom_article, String description, Categorie infosCategorie, int mise_a_prix,
-			java.util.Date date_debut_enchere, java.util.Date date_fin_enchere, Retrait infosRetrait, int no_utilisateur) {
+			LocalDate date_debut_enchere, LocalDate date_fin_enchere, Retrait infosRetrait, int no_utilisateur) {
 		super();
 		this.nomArticle = nom_article;
 		this.description = description;
@@ -82,19 +82,19 @@ public ArticleVendu(String nom_article, String description, Categorie infosCateg
 		this.description = description;
 	}
 
-	public java.util.Date getDateDebutEncheres() {
+	public LocalDate getDateDebutEncheres() {
 		return dateDebutEncheres;
 	}
 
-	public void setDateDebutEncheres(java.util.Date date) {
+	public void setDateDebutEncheres(LocalDate date) {
 		this.dateDebutEncheres = date;
 	}
 
-	public java.util.Date getDateFinEncheres() {
+	public LocalDate getDateFinEncheres() {
 		return dateFinEncheres;
 	}
 
-	public void setDateFinEncheres(java.util.Date date) {
+	public void setDateFinEncheres(LocalDate date) {
 		this.dateFinEncheres = date;
 	}
 

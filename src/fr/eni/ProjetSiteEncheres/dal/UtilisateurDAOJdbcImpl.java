@@ -174,7 +174,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit, administrateur);
 
 				
-				System.out.println("ok utilisateur");
 				return utilisateur;
 		}
 		catch (SQLException e) {

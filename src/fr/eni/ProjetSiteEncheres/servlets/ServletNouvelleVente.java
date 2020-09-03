@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.eni.ProjetSiteEncheres.BusinessException;
 import fr.eni.ProjetSiteEncheres.bll.ArticleManager;
+import fr.eni.ProjetSiteEncheres.bll.CategorieManager;
 import fr.eni.ProjetSiteEncheres.bo.ArticleVendu;
 import fr.eni.ProjetSiteEncheres.bo.Categorie;
 import fr.eni.ProjetSiteEncheres.bo.Retrait;
@@ -62,17 +63,17 @@ public class ServletNouvelleVente extends HttpServlet {
 		int mise_a_prix = Integer.parseInt(request.getParameter("mise_a_prix"));
 		
 		//récupération des dates
-		java.util.Date date_debut_enchere = null;
-		java.util.Date date_fin_enchere = null;
+		LocalDate date_debut_enchere = null;
+		LocalDate date_fin_enchere = null;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
 		try {
-			date_debut_enchere = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date_debut_enchere"));
-			date_fin_enchere = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date_fin_enchere"));
-		} catch (ParseException e1) {
-			System.out.println("les dates ne sont pas prises en compte");
+			date_debut_enchere = LocalDate.parse(request.getParameter("date_debut_enchere"));
+			date_fin_enchere = LocalDate.parse(request.getParameter("date_fin_enchere"));
+		System.out.println(date_debut_enchere + "" + date_fin_enchere);
+		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 		
-			
 		//récupération des infos du retrait
 		String retrait_rue = request.getParameter("retrait_rue");
 		String retrait_c_p = request.getParameter("retrait_c_p");
@@ -83,13 +84,16 @@ public class ServletNouvelleVente extends HttpServlet {
 		Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurInfo");
 		int no_utilisateur = utilisateurSession.getNoUtilisateur();
 		
-		
 		Retrait infosRetrait = new Retrait(retrait_rue, retrait_c_p, retrait_ville);
-		Categorie infosCategorie = new Categorie(0, libelle);
-		ArticleVendu nouvelArticle = new ArticleVendu(nom_article, description, infosCategorie, mise_a_prix, date_debut_enchere, date_fin_enchere, infosRetrait,no_utilisateur  );
-	
 		
 		try {
+			
+			CategorieManager categorieManager = new CategorieManager();
+			int no_categorie = categorieManager.recupNoCategorie(libelle);
+			
+			Categorie infosCategorie = new Categorie(no_categorie, libelle);
+			ArticleVendu nouvelArticle = new ArticleVendu(nom_article, description, infosCategorie, mise_a_prix, date_debut_enchere, date_fin_enchere, infosRetrait,no_utilisateur  );
+			
 			ArticleManager articleManager = new ArticleManager();
 			
 			if (articleManager.insertArticle(nouvelArticle)) {

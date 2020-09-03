@@ -117,7 +117,6 @@ public class UtilisateurManager {
 				
 				if (this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe) != null) {
 					utilisateur = this.utilisateurDAO.verificationCouplePseudoMdp(pseudo, mot_de_passe);
-					System.out.println("vÃ©rif ok (manager)");
 				}
 				else {
 					System.out.println("vÃ©rif no OK (manager)");
