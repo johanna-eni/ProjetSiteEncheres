@@ -25,9 +25,10 @@
 		<span class="col-lg-12 visible-lg alert alert-warning">large</span>
 	</div>
 	
-	<div class="container col-md-12 col-md-offset-1">
-		<div class="hautDePage">
+	<div class="row container col-md-12 col-md-offset-1">
+		<div>
 			<h3>ENI-Enchères</h3>
+			<h4>Nouvelle vente</h4>
 		</div>
 	</div>
 	
@@ -39,17 +40,23 @@
 			</div>
 		</div>
 		<div class="row container col-md-4 col-md-offset-4">
-					<div >
-						<div class="input-group">
-							<label for="nom-article">Article</label>
-							<input align="right" class="input" type="text" name="nom_article" value="">
-						</div>
+					<div>
+						<label for="nom-article">Article</label>
+						<input class="input" type="text" name="nom_article" value="">
 					</div>
+		</div>	
+		
+		
+		<div class="row">
+					
+						<label class="col-md-2 col-md-offset-4" for="nom-article">Article</label>
+						<input class="input col-md-2 col-md-offset-6" type="text" name="nom_article" value="">
+					
 		</div>	
 				
 		<div class="row container col-md-4 col-md-offset-4">
 			<div>
-				<label for="description">Description : </label>
+				<label class="align-items-start" for="description">Description : </label>
 				<textarea class="" name="description" rows="5" cols="33"></textarea><br>
 			</div>
 		</div>
