@@ -25,7 +25,7 @@ public class ArticleManager {
 			//vérif article est en caractère alphanumérique
 			ArticleVendu articleVendu = new ArticleVendu();
 			if(nouvelArticle.getNomArticle().matches("\\p{Alnum}")){
-				System.out.println("nomArticle non valable");
+				System.out.println("(ArticleManager) nomArticle non valable");
 				ok = false;
 			}
 				else {
@@ -51,14 +51,14 @@ public class ArticleManager {
 					//information de retrait;
 					Retrait retrait = new Retrait(nouvelArticle.getRetrait().getRue(),nouvelArticle.getRetrait().getCodePostal(), nouvelArticle.getRetrait().getVille());
 					articleVendu.setRetrait(retrait);
-					System.out.println("no categorie avant insert en base :" + articleVendu.getCategorie().getNoCategorie());
+					System.out.println("(ArticleManager) no categorie avant insert en base :" + articleVendu.getCategorie().getNoCategorie());
 					System.out.println(articleVendu);
 					
 					if (this.articleDAO.insert(nouvelArticle)) {
 						ok = true;
 					}
 					else {
-						System.out.println("BLL - l'article n'a pas pu etre inséré");
+						System.out.println("(ArticleManager) l'article n'a pas pu etre inséré");
 						ok = false;
 					}
 				}

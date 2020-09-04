@@ -29,7 +29,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 				ResultSet rs;
 
 					pstmt = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
-					System.out.println("no categorie dal : " + articleVendu.getCategorie().getNoCategorie());
+					System.out.println("(ArticleDAOJdbcImpl) no categorie dal : " + articleVendu.getCategorie().getNoCategorie());
 					pstmt.setString(1, articleVendu.getNomArticle());
 					pstmt.setString(2, articleVendu.getDescription());
 					pstmt.setDate(3,  Date.valueOf(articleVendu.getDateDebutEncheres()));
@@ -61,7 +61,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 		
 		
 		catch (Exception e) {
-			System.out.println("DAL - connection impossible");
+			System.out.println("(ArticleDAOJdbcImpl) DAL - connection impossible");
 			e.printStackTrace();
 		}
 		return ok;

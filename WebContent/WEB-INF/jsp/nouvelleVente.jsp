@@ -55,11 +55,11 @@
 		
 		<div class="row container col-md-4 col-md-offset-4">
 			<div>
-					<label for="nom_categorie">Catégories </label>
+					<label for="nom_categorie">Catégories :</label>
 				<select class="" name="nom_categorie" id="nom_categorie">
 					<option value="bricolage">Bricolage</option>
 					<option value="jardinage">Jardinage</option>
-					<option value="equipement_maison">Equipement de la maison</option>
+					<option value="equipement maison">Equipement de la maison</option>
 					<option value="decoration">Décoration</option>
 				</select><br>
 			</div>

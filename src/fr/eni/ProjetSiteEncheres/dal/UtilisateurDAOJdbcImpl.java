@@ -29,10 +29,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	@Override
 	public void insert(Utilisateur utilisateur) throws BusinessException {
 		
-		try(Connection cnx = ConnectionProvider.getConnection()) 
-		{
-			try
-			{
+		try(Connection cnx = ConnectionProvider.getConnection()) {
+			try	{
 				cnx.setAutoCommit(false);
 				PreparedStatement pstmt;
 				ResultSet rs;
@@ -52,7 +50,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					pstmt.setString(9, utilisateur.getMotDePasse());
 					pstmt.setInt(10, utilisateur.getCredit());
 					pstmt.setInt(11, utilisateur.getAdministrateur());
-					
 					
 					pstmt.executeUpdate();
 
@@ -169,6 +166,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					motDePasse = rs.getString("mot_de_passe");
 					credit = rs.getInt("credit");
 					administrateur = rs.getInt("administrateur");
+					
 				}
 				
 				Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit, administrateur);

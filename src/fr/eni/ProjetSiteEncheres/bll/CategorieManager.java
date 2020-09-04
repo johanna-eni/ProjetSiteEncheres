@@ -13,15 +13,15 @@ public class CategorieManager {
 	}
 
 	public int recupNoCategorie(String libelle) {
-		int no_categorie = 0;
+		int no_categorie = 1;
 		try {
 			no_categorie = this.categorieDAO.select(libelle);
-			System.out.println("méthode bll no categorie ok ");
-		} catch (BusinessException e) {
+			System.out.println("(CategorieManager) méthode bll numero categorie ok, numero :" + no_categorie);
+			System.out.println("(CategorieManager) méthode bll numero categorie ok, libelle :" + libelle);
+		}
+		catch (BusinessException e) {
 			e.printStackTrace();
 		}
-		
-		
 		return no_categorie;
 	}
 }
