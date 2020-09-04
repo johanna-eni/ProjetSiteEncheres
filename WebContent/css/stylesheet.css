@@ -1,6 +1,6 @@
 .hautDePage {
 	
-	color:red;
+color:blue;
 	
 }
 
@@ -8,3 +8,7 @@
 	padding-right: 0px;
 	pading-left: 20px;
 }-->
+
+.card {
+ border:1px dotted black;
+ }
