@@ -140,8 +140,7 @@ public class UtilisateurManager {
 	{
 		Utilisateur utilisateurModifie = new Utilisateur();
 		boolean ok = false;
-		try {
-		System.out.println("vérif BLL" + nvxMotDePasse);	
+		try {	
 		
 		if(this.verifPseudoMotDePasse(premierPseudo, mot_de_passe_actuel) != null) {
 			
@@ -159,7 +158,6 @@ public class UtilisateurManager {
 				utilisateurModifie.setNvxMotDePasse(nvxMotDePasse);
 			
 				if(this.utilisateurDAO.modifyUtilisateur(utilisateurModifie) != null) {
-					System.out.println("BLL OK");
 					utilisateurModifie.setMotDePasse(nvxMotDePasse);
 					ok = true;
 				}

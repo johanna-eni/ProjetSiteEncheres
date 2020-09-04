@@ -1,5 +1,8 @@
 package fr.eni.ProjetSiteEncheres.bll;
 
+import java.util.Collection;
+import java.util.List;
+
 import fr.eni.ProjetSiteEncheres.BusinessException;
 import fr.eni.ProjetSiteEncheres.bo.ArticleVendu;
 import fr.eni.ProjetSiteEncheres.bo.Categorie;
@@ -29,7 +32,6 @@ public class ArticleManager {
 				ok = false;
 			}
 				else {
-					System.out.println("nomArticle ok");
 					articleVendu.setNomArticle(nouvelArticle.getNomArticle());
 					articleVendu.setDescription(nouvelArticle.getDescription());
 					
@@ -51,7 +53,7 @@ public class ArticleManager {
 					//information de retrait;
 					Retrait retrait = new Retrait(nouvelArticle.getRetrait().getRue(),nouvelArticle.getRetrait().getCodePostal(), nouvelArticle.getRetrait().getVille());
 					articleVendu.setRetrait(retrait);
-					System.out.println("(ArticleManager) no categorie avant insert en base :" + articleVendu.getCategorie().getNoCategorie());
+					System.out.println("(ArticleManager) no_categorie avant insert en base :" + articleVendu.getCategorie().getNoCategorie());
 					System.out.println(articleVendu);
 					
 					if (this.articleDAO.insert(nouvelArticle)) {
@@ -64,6 +66,33 @@ public class ArticleManager {
 				}
 		}
 		catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		return ok;
+	}
+
+
+
+	public Collection<ArticleVendu> selectArticles(int no_categorie) throws BusinessException {
+		Collection<ArticleVendu> listeArticlesChoisis = null;
+		if(no_categorie != 0) {
+			listeArticlesChoisis = this.articleDAO.selectArticles(no_categorie);
+		}
+		return listeArticlesChoisis;
+		
+		
+	}
+
+
+
+	public boolean insertRetrait(String retrait_rue, String retrait_c_p, String retrait_ville, int no_utilisateur){
+		boolean ok = false;
+		try {
+			if(this.articleDAO.insertRetrait(retrait_rue, retrait_c_p, retrait_ville, no_utilisateur)) {
+				ok = true;
+			}
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ok;

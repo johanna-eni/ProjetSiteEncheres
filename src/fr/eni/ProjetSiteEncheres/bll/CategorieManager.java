@@ -16,8 +16,6 @@ public class CategorieManager {
 		int no_categorie = 1;
 		try {
 			no_categorie = this.categorieDAO.select(libelle);
-			System.out.println("(CategorieManager) méthode bll numero categorie ok, numero :" + no_categorie);
-			System.out.println("(CategorieManager) méthode bll numero categorie ok, libelle :" + libelle);
 		}
 		catch (BusinessException e) {
 			e.printStackTrace();

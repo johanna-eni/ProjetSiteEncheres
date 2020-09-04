@@ -99,7 +99,7 @@
 					<legend>Retrait</legend>
 			
 					<label for="retrait_rue">Rue</label>
-					<input type="text" name="rue" value=" ${ utilisateurInfo.rue}"><br>
+					<input type="text" name="retrait_rue" value=" ${ utilisateurInfo.rue}"><br>
 			
 					<label for="retrait_c_p">Code postal</label>
 					<input type="text" name="retrait_c_p" value=" ${ utilisateurInfo.codePostal}"><br>

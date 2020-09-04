@@ -5,16 +5,21 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import fr.eni.ProjetSiteEncheres.BusinessException;
 import fr.eni.ProjetSiteEncheres.bo.ArticleVendu;
+import fr.eni.ProjetSiteEncheres.bo.Retrait;
 
 public class ArticleDAOJdbcImpl implements ArticleDAO{
 
 	private static final String INSERT_ARTICLE = "INSERT into ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) values(?,?,?,?,?,?,?)";
-	
-	
+	private static final String SELECT_ARTICLES_BY_NO_CATEGORIE = "SELECT * FROM ARTICLE_VENDUS where no_categorie = ?";
+	private static final String INSERT_RETRAIT = "INSERT into RETRAITS (no_article, rue, code_postal, ville) values (?,?,?,?)";
 	
 	
 	@Override
@@ -57,13 +62,98 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 						throw e;
 					}
 				}
-			
-		
 		
 		catch (Exception e) {
 			System.out.println("(ArticleDAOJdbcImpl) DAL - connection impossible");
 			e.printStackTrace();
 		}
 		return ok;
+	}
+
+
+
+
+	@Override
+	public Collection<ArticleVendu> selectArticles(int no_categorie) {
+		
+		Collection<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
+		
+		try (Connection cnx = ConnectionProvider.getConnection()){
+		
+			try {
+				cnx.setAutoCommit(false);
+				PreparedStatement pstmt;
+				ResultSet rs;
+				
+				pstmt = cnx.prepareStatement(SELECT_ARTICLES_BY_NO_CATEGORIE);
+				
+				pstmt.setInt(1, no_categorie);
+				
+				rs = pstmt.executeQuery();
+				
+				ArticleVendu article = null;
+				while(rs.next()) {
+					article = new ArticleVendu();
+				    article.setNoArticle(rs.getInt(1));
+				    article.setNomArticle(rs.getString(2));
+				    article.setDescription(rs.getString(3));
+				    article.setDateDebutEncheres(rs.getDate(4).toLocalDate());
+				    article.setDateFinEncheres(rs.getDate(5).toLocalDate());
+				    article.setMiseAPrix(rs.getInt(6));
+				    article.setPrixVente(rs.getInt(7));
+				    article.setNoUtilisateur(rs.getInt(8));
+				    
+				   listeArticles.add( article );
+				}
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return listeArticles;
+	}
+
+
+
+
+	@Override
+	public boolean insertRetrait(String rue, String code_postal, String ville, int no_utilisateur) throws BusinessException {
+		boolean ok = false;
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			
+			try
+			{
+				cnx.setAutoCommit(false);
+				PreparedStatement pstmt;
+
+					pstmt = cnx.prepareStatement(INSERT_RETRAIT);
+					pstmt.setInt(1, no_utilisateur);
+					pstmt.setString(2, rue);
+					pstmt.setString(3, code_postal);
+					pstmt.setString(4, ville);
+					
+					
+					pstmt.executeUpdate();
+					
+						pstmt.close();
+						cnx.commit();
+						ok = true;
+					}
+					catch(Exception e) {
+						e.printStackTrace();
+						throw e;
+					}
+				}
+		
+		catch (Exception e) {
+			System.out.println("(ArticleDAOJdbcImpl) DAL - connection impossible");
+			e.printStackTrace();
+		}
+		return ok;
+		
 	}
 }

@@ -95,8 +95,10 @@ public class ServletNouvelleVente extends HttpServlet {
 			ArticleVendu nouvelArticle = new ArticleVendu(nom_article, description, infosCategorie, mise_a_prix, date_debut_enchere, date_fin_enchere, infosRetrait,no_utilisateur  );
 			
 			ArticleManager articleManager = new ArticleManager();
+			System.out.println(retrait_rue + "" + retrait_c_p +"" + retrait_ville);
 			
-			if (articleManager.insertArticle(nouvelArticle)) {
+			if (articleManager.insertArticle(nouvelArticle) && articleManager.insertRetrait(retrait_rue, retrait_c_p, retrait_ville, nouvelArticle.getNoArticle())) {
+				
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueilConnexionMonProfil.jsp");
 				rd.forward(request, response);
 				
