@@ -3,7 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="W-UA-Compatible" content="ie=edge">
+
+<link href="css/stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="vendor/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="vendor/bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<script src="vendor/bootstrap-3.3.7/js/jquery-3.2.1.js" type="text/javascript"></script>
+
+<jsp:include page="/WEB-INF/fragments/fragmentCDNBootstrap.jspf"></jsp:include>
 <title>Mon profil</title>
 </head>
 <body>
@@ -36,18 +45,7 @@
 		<input type="submit"  value="Rechercher"><br>
 	</form>
 	
-	<article class="">
-		<ul id="listeArticle">
-			<li class="">
-				<a href="#">
-					<img src="" alt=""/>
-					<h3>PC Gamer</h3>
-					<p>Prix :</p>
-					<p>Fin de l'enchère :</p>
-					<p>Vendeur :</p>
-				</a>
-			</li>
-		</ul>
-	</article>
+	<%@include file="/WEB-INF/jspf/presentationVente.jspf" %>
+	
 </body>
 </html>

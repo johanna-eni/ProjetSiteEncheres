@@ -39,41 +39,39 @@
 		</div>
 	</div>
 	
-	
-	<h3>Liste des enchères</h3>
-	
+	<h3 style="text-align:center">Liste des enchères</h3>
 	<h3>Filtres :</h3>
 	
-	<form action="<%=request.getContextPath()%>/ServletFiltre" method="post">
-		<input type="text" name="pseudo" value="Le nom de l'article contient"><br>
+	<div class="row">
+		<div class="col-lg-5">
+			<form action="<%=request.getContextPath()%>/ServletFiltre" method="post">
+			<input type="text" name="pseudo" value="Le nom de l'article contient">
+			<br>
+			<br>
+			<label for="categorie_selection">Catégories</label>
 	
-	<label for="categorie_selection">Catégories</label>
+			<select name="categorie" id="categorie_selection">
+				<option value="toutes">Toutes</option>
+				<option value="bricolage">Bricolage</option>
+				<option value="jardinnage">Jardinnage</option>
+				<option value="equipement_maison">Equipement de la maison</option>
+				<option value="decoration">Décoration</option>
+			</select>
+		</div>
+		
+		<div class="col-lg-5">
+			<label for="rechercher"></label>
+			<input type="submit"  value="Rechercher" style="width : 350px"><br>
+		</div>
+	</div>
 	
-	<select name="categorie" id="categorie_selection">
-		<option value="toutes">Toutes</option>
-		<option value="bricolage">Bricolage</option>
-		<option value="jardinnage">Jardinnage</option>
-		<option value="equipement_maison">Equipement de la maison</option>
-		<option value="decoration">Décoration</option>
-	</select>
 	
-	<label for="rechercher"></label>
-		<input type="submit"  value="Rechercher"><br>
 	</form>
+	<br>
+	<br>
 	
-	<article class="">
-		<ul id="listeArticle">
-			<li class="">
-				<a href="#">
-					<img src="" alt=""/>
-					<h3>PC Gamer</h3>
-					<p>Prix :</p>
-					<p>Fin de l'enchère :</p>
-					<p>Vendeur :</p>
-				</a>
-			</li>
-		</ul>
-	</article>
+	<%@include file="/WEB-INF/jspf/presentationVente.jspf" %>
+	
 	
 	
 	
