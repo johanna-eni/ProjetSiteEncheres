@@ -17,7 +17,7 @@
 <title>Accueil</title>
 </head>
 
-<body class="container-fluid col-sm-10 col-sm-offset-1">
+<body class="container-fluid col-lg-10 col-sm-offset-1">
 	<div class="">
 		<span class="col-xs-12 visible-xs alert alert-danger">extra small</span>
 		<span class="col-sm-12 visible-sm alert alert-info">small</span>

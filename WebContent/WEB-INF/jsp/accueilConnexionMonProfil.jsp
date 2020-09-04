@@ -13,14 +13,23 @@
 <script src="vendor/bootstrap-3.3.7/js/jquery-3.2.1.js" type="text/javascript"></script>
 
 <jsp:include page="/WEB-INF/fragments/fragmentCDNBootstrap.jspf"></jsp:include>
+
 <title>Mon profil</title>
 </head>
-<body>
+
+<body class="container-fluid col-lg-10 col-lg-offset-1">
+	<div class="">
+		<span class="col-xs-12 visible-xs alert alert-danger">extra small</span>
+		<span class="col-sm-12 visible-sm alert alert-info">small</span>
+		<span class="col-md-12 visible-md alert alert-success">medium</span>
+		<span class="col-lg-12 visible-lg alert alert-warning">large</span>
+	</div>
+	
 	<h3>Mon profil</h3>
 	
 	
 	<a href="">Encheres</a>
-	<a href="<%=request.getContextPath()%>/ServletNouvelleVente"">Vendre un article</a>
+	<a href="<%=request.getContextPath()%>/ServletNouvelleVente">Vendre un article</a>
 	<a href="<%=request.getContextPath()%>/ServletModifierMonProfil">Mon profil</a>
 	<a href="<%=request.getContextPath()%>/ServletDeconnexion">Deconnexion</a>
 	
@@ -45,7 +54,7 @@
 		<input type="submit"  value="Rechercher"><br>
 	</form>
 	
-	<%@include file="/WEB-INF/jspf/presentationVente.jspf" %>
 	
+	<%@ include file="/WEB-INF/fragments/footer.html" %>
 </body>
 </html>
