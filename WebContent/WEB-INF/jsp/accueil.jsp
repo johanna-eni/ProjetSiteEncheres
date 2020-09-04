@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="W-UA-Compatible" content="ie=edge">
 
-<link href="css/stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="/css/stylesheet.css" rel="stylesheet" type="text/css"/>
 <link href="vendor/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="vendor/bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
 <script src="vendor/bootstrap-3.3.7/js/jquery-3.2.1.js" type="text/javascript"></script>
@@ -25,7 +25,7 @@
 		<span class="col-lg-12 visible-lg alert alert-warning">large</span>
 	</div>
 	
-	<div class="row align-items-center;">
+	<div class="row">
 		<div class="hautDePage">
 			<div class="col-lg-2">
 				<h3 class="text-left">ENI-Enchères</h3>
@@ -44,29 +44,33 @@
 	
 	<div class="row">
 		<div class="col-lg-5">
-			<form action="<%=request.getContextPath()%>/ServletFiltre" method="post">
-			<input type="text" name="pseudo" value="Le nom de l'article contient">
+			<form action="<%=request.getContextPath()%>/ServletFiltreCategorie" method="post">
+			<input type="text" name="pseudo"  style="width : 400px" value="Le nom de l'article contient" >
 			<br>
 			<br>
-			<label for="categorie_selection">Catégories</label>
-	
-			<select name="categorie" id="categorie_selection">
+			<div>
+			<label for="categorie_selection">Catégories :</label>
+			
+			<select name="categorie" style="width : 315px">
 				<option value="toutes">Toutes</option>
 				<option value="bricolage">Bricolage</option>
 				<option value="jardinnage">Jardinnage</option>
 				<option value="equipement_maison">Equipement de la maison</option>
 				<option value="decoration">Décoration</option>
 			</select>
+			</div>
+			</form>
 		</div>
 		
 		<div class="col-lg-5">
 			<label for="rechercher"></label>
-			<input type="submit"  value="Rechercher" style="width : 350px"><br>
+			<input type="submit"  value="Rechercher" style="width : 350px; height : 75px"><br>
 		</div>
+		
 	</div>
 	
 	
-	</form>
+
 	<br>
 	<br>
 	
