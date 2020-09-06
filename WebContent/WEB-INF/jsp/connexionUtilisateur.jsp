@@ -27,78 +27,32 @@
 	<div class="row">
 		<div class="hautDePage">
 			<div class="col-lg-2">
-				<h3 class="text-left">ENI-Enchères</h3>
+				<h3 class="text-left">ENI-Enchères</h3><br><br>
 			</div>
 		</div>
 	</div>
 	
 	<form action="<%=request.getContextPath()%>/ServletConnexionUtilisateur" method="post">
 	<div class="row">
-		<div>
-			<div class="col-lg-2 col-lg-offset-4">
-				<label for="pseudo">Pseudo :</label>
-			</div><br>
-			<div class="col-lg-4 col-lg-offset-4">
-				<label for="mot_de_passe">Mot de passe :</label>
-			</div>
-			<div class="col-lg-2 col-lg-offset-4">
-				<label for="connexion"></label>
-				<input type="submit"  value="Connexion"><br>
-			</div>
+		<div  class="col-lg-2 col-lg-offset-4">
+			<label for="pseudo">Pseudo :</label><br><br>
+			<label for="mot_de_passe">Mot de passe :</label><br><br>
+			<label for="connexion"></label>
+			<input type="submit"  value="Connexion" style="width : 100px; height : 50px"><br>
 		</div>
-		<div>
-			<div class="col-lg-2 col-lg-offset-6">
-				<input type="text" name="pseudo" value=""><br>
-			</div>
-			<div class="col-lg-2 col-lg-offset-6">
-				<input type="password" name="mot_de_passe" value=""><br>
-			</div>
-			<div class="col-lg-2 col-lg-offset-6">
- 				 <input type="checkbox" id="scales" name="scales" checked>
- 				 <label for="scales">Se souvenir de moi</label>
-			</div>
-			<div class="col-lg-2 col-lg-offset-6">
-				<a href="<%=request.getContextPath()%>\ServletConnexionUtilisateur">Mot de passe oublié</a>
-			</div>
+		<div  class="col-lg-2">
+			<input type="text" name="pseudo" value=""><br><br>
+			<input type="password" name="mot_de_passe" value=""><br><br>
+ 			<input type="checkbox" id="scales" name="scales" checked>
+ 			<label for="scales">Se souvenir de moi</label><br>
+			<a href="<%=request.getContextPath()%>\ServletConnexionUtilisateur">Mot de passe oublié</a><br><br><br><br>
 		</div>
-</div>
-	
-	
-	
-	
-	
+	</div>
+
 	<div class="col-lg-4 col-lg-offset-4">
-		<a href="<%=request.getContextPath()%>/jsp/formulaireInscription.jsp"><input type="button" value="Créer un compte"></a>
+		<a href="<%=request.getContextPath()%>/jsp/formulaireInscription.jsp"><input type="button" value="Créer un compte" style="width : 370px; height : 75px"></a>
 	</div>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<form action="<%=request.getContextPath()%>/ServletConnexionUtilisateur" method="post">
-		<label for="pseudo">Pseudo :</label>
-		<input type="text" name="pseudo" value=""><br>
-		
-		<label for="mot_de_passe">Mot de passe :</label>
-		<input type="password" name="mot_de_passe" value=""><br>
-		
-		<label for="connexion"></label>
-		<input type="submit"  value="Connexion"><br>
-		
-		<!--<label for="se_souvenir_de_moi">Se souvenir de moi</label>
-		<input type="checkbox" name="se_souvenir_de_moi" id="se_souvenir_de_moi"></div><br>-->
-		
-		<a href="<%=request.getContextPath()%>/jsp/envoieEmail.jsp">Mot de passe oublié</a><br>
-		
-		<a href="<%=request.getContextPath()%>/jsp/formulaireInscription.jsp"><input type="button" value="Créer un compte"></a>
-		
 	</form>
-	
-	
 </body>
 </html>
