@@ -1,6 +1,6 @@
 .hautDePage {
 	
-color:blue;
+color:black;
 	
 }
 
@@ -12,3 +12,7 @@ color:blue;
 .card {
  border:1px dotted black;
  }
+ 
+label {
+	font-size:5px;
+}
