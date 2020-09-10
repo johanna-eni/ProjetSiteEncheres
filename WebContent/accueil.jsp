@@ -45,11 +45,19 @@
 	<div class="row">
 		<div class="col-lg-5">
 			<form action="<%=request.getContextPath()%>/ServletFiltreCategorie" method="post">
-			<input type="text" name="pseudo"  style="width : 400px" value="Le nom de l'article contient" >
+			<select name="categorie" style="width : 315px">
+				<option value="toutes">Toutes</option>
+				<option value="bricolage">Bricolage</option>
+				<option value="jardinage">Jardinage</option>
+				<option value="equipement maison">Equipement de la maison</option>
+				<option value="decoration">Décoration</option>
+			</select>
+			
 			<br>
 			<br>
 			<div>
-			<label for="categorie_selection">Catégories :</label>
+			
+			<!--<label for="categorie_selection">Catégories :</label>
 			
 			<select name="categorie" style="width : 315px">
 				<option value="toutes">Toutes</option>
@@ -58,8 +66,9 @@
 				<option value="equipement_maison">Equipement de la maison</option>
 				<option value="decoration">Décoration</option>
 			</select>
-			</div>
-			</form>
+			  -->
+			
+		
 		</div>
 		
 		<div class="col-lg-5">
@@ -67,9 +76,10 @@
 			<input type="submit"  value="Rechercher" style="width : 350px; height : 75px"><br>
 		</div>
 		
+	
+	</form>
 	</div>
-	
-	
+	</div>
 
 	<br>
 	<br>

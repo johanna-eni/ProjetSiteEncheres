@@ -18,13 +18,16 @@
 </head>
 <body>
 
+<h4>Nom de l'article ${ listeArticlesChoisis.nomArticle } </h4>
+
+
 <div class="row">
     <div>
         <div class="col-md-2 col-md-offset-3">
         <div class="card" style="width: 18rem;">
               <img src="images/pexels-miguel-montejano-1152831.jpg" class="card-img-top" alt="...">
                  <div class="card-body">
-                    <h5 class="card-title">APP 1</h5>
+                    <h5 class="card-title">${ listeArticlesChoisis.nomArticle } app1</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="/TpRechercherNombre/App1.index.html" class="btn btn-primary">Go</a>
                  </div>

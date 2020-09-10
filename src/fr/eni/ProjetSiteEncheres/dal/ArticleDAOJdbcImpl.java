@@ -18,7 +18,7 @@ import fr.eni.ProjetSiteEncheres.bo.Retrait;
 public class ArticleDAOJdbcImpl implements ArticleDAO{
 
 	private static final String INSERT_ARTICLE = "INSERT into ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) values(?,?,?,?,?,?,?)";
-	private static final String SELECT_ARTICLES_BY_NO_CATEGORIE = "SELECT * FROM ARTICLE_VENDUS where no_categorie = ?";
+	private static final String SELECT_ARTICLES_BY_NO_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS where no_categorie = ?";
 	private static final String INSERT_RETRAIT = "INSERT into RETRAITS (no_article, rue, code_postal, ville) values (?,?,?,?)";
 	
 	

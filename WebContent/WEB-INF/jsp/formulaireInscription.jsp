@@ -14,7 +14,6 @@
 
 <jsp:include page="/WEB-INF/fragments/fragmentCDNBootstrap.jspf"></jsp:include>
 
-<meta charset="UTF-8">
 <title>Page d'inscription</title>
 </head>
 <body class="container-fluid col-lg-10 col-sm-offset-1">
@@ -40,8 +39,10 @@
 	
 	
 		<div class="row">
-				<div class="col-lg-1 col-lg-offset-2">
+			<div class="col-lg-1 col-lg-offset-2">
+				<div style=font-size:1em>
 					<label for="pseudo">Pseudo</label>
+				</div>
 				</div>
 			<div class="col-lg-2">
 				<input type="text" name="pseudo" value="">
@@ -105,7 +106,9 @@
 		
 		<div class="row">
 			<div class="col-lg-1 col-lg-offset-2">
-				<label for="mot_de_passe">Mot de passe</label>
+				<div style=font-size:0.89em>
+					<label for="mot_de_passe">Mot de passe</label>
+				</div>
 			</div>
 			<div class="col-lg-2">
 				<input type="password" name="mot_de_passe" value=""><br>

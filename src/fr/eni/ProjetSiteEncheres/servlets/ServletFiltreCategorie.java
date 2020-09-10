@@ -3,6 +3,7 @@ package fr.eni.ProjetSiteEncheres.servlets;
 import java.io.IOException;
 import java.util.Collection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,13 +46,16 @@ public class ServletFiltreCategorie extends HttpServlet {
 		CategorieManager categorieManager = new CategorieManager();
 		
 		String categorie = request.getParameter("categorie");
+		System.out.println("servletFiltreCathegorie :" + categorie);
 		int no_categorie = categorieManager.recupNoCategorie(categorie);
 		
 		ArticleManager articleManager = new ArticleManager();
 		
 		try {
 			Collection<ArticleVendu> listeArticlesChoisis = articleManager.selectArticles(no_categorie);
-			 
+			System.out.println(listeArticlesChoisis);
+			RequestDispatcher rd = request.getRequestDispatcher("/accueil.jsp");
+			rd.forward(request, response);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
