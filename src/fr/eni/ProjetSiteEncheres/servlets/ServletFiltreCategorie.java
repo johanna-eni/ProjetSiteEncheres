@@ -54,6 +54,7 @@ public class ServletFiltreCategorie extends HttpServlet {
 		try {
 			Collection<ArticleVendu> listeArticlesChoisis = articleManager.selectArticles(no_categorie);
 			System.out.println(listeArticlesChoisis);
+			request.setAttribute("listeArticlesChoisis", listeArticlesChoisis);
 			RequestDispatcher rd = request.getRequestDispatcher("/accueil.jsp");
 			rd.forward(request, response);
 		}

@@ -42,6 +42,8 @@
 	<h3 style="text-align:center">Liste des enchères</h3>
 	<h3>Filtres :</h3>
 	
+	<input text="" value="Le nom de l'article contient" style="width:25em"><br>
+	<label>Catégorie :</label>
 	<div class="row">
 		<div class="col-lg-5">
 			<form action="<%=request.getContextPath()%>/ServletFiltreCategorie" method="post">
