@@ -25,34 +25,50 @@
 		<span class="col-lg-12 visible-lg alert alert-warning">large</span>
 	</div>
 	
-	<h3>Mon profil</h3>
+	<div class="row">
+		<div class="hautDePage">
+			<div class="col-lg-2">
+				<h3 class="text-left">ENI-Enchères</h3>
+			</div>
+		</div>
+		<div class="hautDePage">
+			<div class="text-right col-lg-4 col-lg-offset-6" >
+				<a href="">Encheres</a>
+				<a href="<%=request.getContextPath()%>/ServletNouvelleVente">Vendre un article</a>
+				<a href="<%=request.getContextPath()%>/ServletModifierMonProfil">Mon profil</a>
+				<a href="<%=request.getContextPath()%>/ServletDeconnexion">Deconnexion</a>
+			</div>
+		</div>
+	</div>
 	
-	
-	<a href="">Encheres</a>
-	<a href="<%=request.getContextPath()%>/ServletNouvelleVente">Vendre un article</a>
-	<a href="<%=request.getContextPath()%>/ServletModifierMonProfil">Mon profil</a>
-	<a href="<%=request.getContextPath()%>/ServletDeconnexion">Deconnexion</a>
-	
-	<h3>Liste des encheres</h3>
+	<h3 style="text-align:center">Liste des encheres</h3>
 	
 		<h3>Filtres :</h3>
 	
-	<form action="<%=request.getContextPath()%>/ServletFiltre" method="post">
-		<input type="text" name="pseudo" value="Le nom de l'article contient"><br>
-	
-	<label for="categorie_selection">Catégories</label>
-	
-	<select name="categorie" id="categorie_selection">
-		<option value="toutes">Toutes</option>
-		<option value="bricolage">Bricolage</option>
-		<option value="jardinnage">Jardinnage</option>
-		<option value="equipement_maison">Equipement de la maison</option>
-		<option value="decoration">Décoration</option>
-	</select>
-	
-	<label for="rechercher"></label>
-		<input type="submit"  value="Rechercher"><br>
+		<form action="<%=request.getContextPath()%>/ServletFiltreCategorie" method="post">
+		<div class="row">
+			<div class="col-lg-5">
+				<input text="" value="Le nom de l'article contient" style="width:28.3em"><br><br>
+					<label>Catégorie :  </label>
+					<select name="categorie" style="width : 315px">
+					<option value="toutes">Toutes</option>
+					<option value="bricolage">Bricolage</option>
+					<option value="jardinage">Jardinage</option>
+					<option value="equipement maison">Equipement de la maison</option>
+					<option value="decoration">Décoration</option>
+				</select>
+			</div>
+			
+				<div class="col-lg-5 ">
+					<label for="rechercher"></label>
+					<input type="submit"  value="Rechercher" style="width : 350px; height : 75px"><br>
+				</div>
+		</div>
 	</form>
+	<br>
+	<br>
+	
+	<%@include file="/WEB-INF/jspf/presentationVente.jspf" %>
 	
 	
 	<%@ include file="/WEB-INF/fragments/footer.html" %>

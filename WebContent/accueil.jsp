@@ -40,49 +40,30 @@
 	</div>
 	
 	<h3 style="text-align:center">Liste des enchères</h3>
+	
 	<h3>Filtres :</h3>
 	
-	<input text="" value="Le nom de l'article contient" style="width:25em"><br>
-	<label>Catégorie :</label>
-	<div class="row">
-		<div class="col-lg-5">
-			<form action="<%=request.getContextPath()%>/ServletFiltreCategorie" method="post">
-			<select name="categorie" style="width : 315px">
-				<option value="toutes">Toutes</option>
-				<option value="bricolage">Bricolage</option>
-				<option value="jardinage">Jardinage</option>
-				<option value="equipement maison">Equipement de la maison</option>
-				<option value="decoration">Décoration</option>
-			</select>
+	<form action="<%=request.getContextPath()%>/ServletFiltreCategorie" method="post">
+		<div class="row">
+			<div class="col-lg-5">
+				<input text="" value="Le nom de l'article contient" style="width:28.3em"><br><br>
+					<label>Catégorie :  </label>
+					<select name="categorie" style="width : 315px">
+					<option value="toutes">Toutes</option>
+					<option value="bricolage">Bricolage</option>
+					<option value="jardinage">Jardinage</option>
+					<option value="equipement maison">Equipement de la maison</option>
+					<option value="decoration">Décoration</option>
+				</select>
+			</div>
 			
-			<br>
-			<br>
-			<div>
-			
-			<!--<label for="categorie_selection">Catégories :</label>
-			
-			<select name="categorie" style="width : 315px">
-				<option value="toutes">Toutes</option>
-				<option value="bricolage">Bricolage</option>
-				<option value="jardinnage">Jardinnage</option>
-				<option value="equipement_maison">Equipement de la maison</option>
-				<option value="decoration">Décoration</option>
-			</select>
-			  -->
-			
-		
+				<div class="col-lg-5 ">
+					<label for="rechercher"></label>
+					<input type="submit"  value="Rechercher" style="width : 350px; height : 75px"><br>
+				</div>
 		</div>
-		
-		<div class="col-lg-5">
-			<label for="rechercher"></label>
-			<input type="submit"  value="Rechercher" style="width : 350px; height : 75px"><br>
-		</div>
-		
-	
 	</form>
-	</div>
-	</div>
-
+		
 	<br>
 	<br>
 	
